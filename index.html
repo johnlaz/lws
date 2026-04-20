@@ -216,7 +216,25 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 /* ── TAB RENAME BADGES ── */
 .nav-tab-wrap{display:inline-flex;align-items:center;gap:0;}
 
-/* ── MEDIATOR ── */
+/* ── AI CHAT ── */
+.chat-bubble{max-width:78%;padding:12px 16px;border-radius:14px;font-size:13.5px;line-height:1.7;word-wrap:break-word;}
+.chat-bubble.user{background:linear-gradient(135deg,rgba(201,162,39,.18),rgba(201,162,39,.1));border:1px solid rgba(201,162,39,.25);color:var(--text);align-self:flex-end;border-bottom-right-radius:4px;}
+.chat-bubble.ai{background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);align-self:flex-start;border-bottom-left-radius:4px;}
+.chat-bubble.ai strong{color:var(--text);}
+.chat-bubble.system{background:rgba(45,212,191,.07);border:1px solid rgba(45,212,191,.2);color:var(--teal);align-self:center;font-size:12px;text-align:center;border-radius:8px;padding:8px 16px;max-width:90%;}
+.chat-bubble.typing{background:var(--surface2);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;padding:14px 18px;}
+.chat-typing-dots{display:inline-flex;gap:5px;align-items:center;}
+.chat-typing-dots span{width:7px;height:7px;border-radius:50%;background:var(--text-muted);animation:typingPulse 1.2s ease-in-out infinite;}
+.chat-typing-dots span:nth-child(2){animation-delay:.2s;}
+.chat-typing-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes typingPulse{0%,80%,100%{opacity:.3;transform:scale(.8);}40%{opacity:1;transform:scale(1);}}
+.chat-meta{font-size:11px;color:var(--text-muted);margin-top:3px;padding:0 4px;}
+.chat-meta.user{text-align:right;}
+.chat-row{display:flex;flex-direction:column;}
+.chat-row.user{align-items:flex-end;}
+.chat-row.ai{align-items:flex-start;}
+.chat-row.system{align-items:center;}
+
 .med-hero{background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(45,212,191,.06),rgba(201,162,39,.06));border:1px solid rgba(139,92,246,.2);border-radius:14px;padding:2rem;margin-bottom:1.75rem;text-align:center;position:relative;overflow:hidden;}
 .med-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(139,92,246,.06),transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(45,212,191,.05),transparent 60%);pointer-events:none;}
 .med-hero-title{font-family:var(--font-display);font-size:24px;color:var(--text);margin-bottom:6px;position:relative;}
@@ -308,7 +326,8 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
       <span class="logo-sub" id="app-subtitle">Personal Strategy & Behavioral Record</span>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:8px;">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div id="storage-indicator" style="font-size:11px;color:var(--text-muted);letter-spacing:.3px;white-space:nowrap;">○ Not saved</div>
     <div class="settings-wrap" id="settingsWrap">
       <button class="settings-btn" onclick="toggleSettingsMenu(event)" title="Settings">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -361,6 +380,10 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
         <button class="settings-item settings-item-danger" onclick="closeSettingsMenu();resetVault();">
           <span class="settings-item-icon">🗑</span>
           <div><div class="settings-item-title">Reset to Blank</div><div class="settings-item-sub">Clears all personal data — keeps app shell</div></div>
+        </button>
+        <button class="settings-item settings-item-danger" onclick="closeSettingsMenu();clearLocalAndReload();">
+          <span class="settings-item-icon">⊗</span>
+          <div><div class="settings-item-title">Clear Local Storage</div><div class="settings-item-sub">Force fresh load — does not delete your vault JSON</div></div>
         </button>
       </div>
     </div>
@@ -572,13 +595,67 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
     </div>
   </div>
 
+  <!-- AI CHAT (tool tab) -->
+  <div id="panel-chat" class="panel">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div class="section-title">💬 AI Chat</div>
+        <div class="section-sub" style="margin-bottom:0;">Private therapy and strategy sessions — log to vault when done</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <select class="form-select" id="chat-persona" style="width:auto;padding:7px 12px;font-size:12px;">
+          <option value="therapist">🧠 Therapist</option>
+          <option value="strategist">📊 Life Strategist</option>
+          <option value="mediator">⚖ Neutral Mediator</option>
+          <option value="coach">🎯 Executive Coach</option>
+          <option value="journal">📓 Reflective Journal</option>
+        </select>
+        <button class="btn btn-ghost btn-sm" onclick="clearChat()">↺ New Session</button>
+        <button class="btn btn-teal btn-sm" id="chat-log-btn" onclick="logChatSession()" style="display:none;">↓ Log This Session</button>
+      </div>
+    </div>
+
+    <!-- Persona description -->
+    <div id="chat-persona-desc" class="insight" style="margin-bottom:1.25rem;font-size:13px;"></div>
+
+    <!-- Chat window -->
+    <div id="chat-window" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;height:480px;overflow-y:auto;padding:1.25rem;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;"></div>
+
+    <!-- Input row -->
+    <div style="display:flex;gap:10px;margin-top:12px;align-items:flex-end;">
+      <textarea id="chat-input" class="form-textarea" placeholder="Type your message… (Enter to send, Shift+Enter for new line)" style="min-height:60px;max-height:140px;resize:vertical;flex:1;margin-bottom:0;" onkeydown="chatKeyDown(event)"></textarea>
+      <button class="btn btn-primary" id="chat-send-btn" onclick="sendChatMessage()" style="height:60px;padding:0 20px;flex-shrink:0;">Send</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+      <div id="chat-status" style="font-size:12px;color:var(--text-muted);"></div>
+      <div style="font-size:11px;color:var(--text-muted);">Messages in this session: <span id="chat-msg-count">0</span></div>
+    </div>
+  </div>
+
 </div><!-- end .main -->
 
 <!-- ADD SESSION MODAL -->
 <div class="modal-overlay" id="addSessionModal">
   <div class="modal">
-    <h3>Add Session Log</h3>
-    <p class="modal-sub">Sessions are saved into your vault and included in vault exports. Use the AI button to generate a clinical summary before saving.</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;">
+      <h3 style="margin-bottom:0;">Add Session Log</h3>
+      <div style="display:flex;gap:8px;flex-shrink:0;margin-left:12px;">
+        <button class="btn btn-ghost btn-sm" onclick="copySessionPrompt()" title="Copy a structured prompt to use with your AI therapist, then paste the transcript back here">
+          📋 Copy Prompt
+        </button>
+        <label class="btn btn-ghost btn-sm" style="cursor:pointer;" title="Upload a session transcript — AI will parse it into the fields below">
+          ⬆ Upload Session
+          <input type="file" id="sess-upload-input" accept=".txt,.md,.text" style="display:none" onchange="uploadSessionFile(event)">
+        </label>
+      </div>
+    </div>
+    <p class="modal-sub">Copy the prompt to use with your AI therapist, paste results back via Upload, or fill manually. AI Summary generates a clinical analysis before saving.</p>
+
+    <!-- Upload parse status -->
+    <div id="sess-upload-status" style="display:none;margin-bottom:1rem;" class="ai-summary-box">
+      <div class="ai-label"><span class="spinner"></span> <span id="sess-upload-label">Parsing session file…</span></div>
+    </div>
+
     <div class="form-group"><label class="form-label">Session Title</label><input class="form-input" id="sess-title" type="text" placeholder="e.g. School aggression discussion, April 14"></div>
     <div class="form-group"><label class="form-label">Date</label><input class="form-input" id="sess-date" type="text" placeholder="e.g. April 2026"></div>
     <div class="form-group"><label class="form-label">Category</label>
@@ -662,7 +739,8 @@ const BLANK_VAULT = {
     { id:"business", label:"Business Strategy",icon:"",   tool:false },
     { id:"future",   label:"Path Forward",     icon:"",   tool:false },
     { id:"sessions", label:"Session Logs",     icon:"",   tool:true  },
-    { id:"mediator", label:"⚡ Mediator",       icon:"",   tool:true  }
+    { id:"mediator", label:"⚡ Mediator",       icon:"",   tool:true  },
+    { id:"chat",     label:"💬 AI Chat",        icon:"",   tool:true  }
   ],
   audit: {
     title: "Overview",
@@ -993,7 +1071,7 @@ async function refreshQuote(tab) {
       { role:'system', content:'Generate a single powerful quote (1-2 sentences, max 35 words) capturing a personal insight from therapy or strategy work. Output ONLY the quote text — no attribution, no quotation marks, no preamble.' },
       { role:'user',   content:`Section context: ${ctx}. ${recentInsights ? `Recent session insights: ${recentInsights}` : ''} Make it feel like a personal realization — honest, grounded, direct.` }
     ], 80);
-    if (res) { el.textContent = res; VAULT[tab] && (VAULT[tab].quote = res); }
+    if (res) { el.textContent = res; VAULT[tab] && (VAULT[tab].quote = res); saveToLocal(); }
   } catch(e) { showToast('Could not refresh quote. Check API key.'); }
 
   btn.disabled = false; btn.textContent = '↻';
@@ -1003,7 +1081,80 @@ async function refreshQuote(tab) {
 // ADD SESSION
 // ════════════════════════════════════════════════════════
 function openAddSessionModal()  { document.getElementById('addSessionModal').classList.add('open'); }
-function closeAddSessionModal() { document.getElementById('addSessionModal').classList.remove('open'); }
+function closeAddSessionModal() {
+  document.getElementById('addSessionModal').classList.remove('open');
+  document.getElementById('sess-upload-status').style.display = 'none';
+  document.getElementById('sess-upload-input').value = '';
+}
+
+// ── COPY SESSION PROMPT ──
+function copySessionPrompt() {
+  const recentContext = VAULT.sessions.slice(-2).map(s => s.insight || s.title || '').filter(Boolean).join(' / ');
+  const prompt = `I want to have a structured private therapy or strategy session with you. Please guide me through the following areas one at a time, asking follow-up questions as needed:
+
+1. What is the main challenge, observation, or situation I want to process today?
+2. What strategies, decisions, or observations have I tried or noticed around this?
+3. What is the single most important insight or takeaway from this discussion?
+4. What tags or keywords would best categorize this session (e.g. communication, anxiety, parenting, business)?
+
+${recentContext ? `For context, recent session themes have included: ${recentContext}.` : ''}
+
+After we work through all four areas, please provide:
+- A suggested SESSION TITLE (one line)
+- PROBLEM/CHALLENGE summary (2-4 sentences)
+- STRATEGY/OBSERVATION summary (2-4 sentences)
+- KEY INSIGHT (one sentence)
+- SUGGESTED TAGS (comma separated)
+
+Format the final output clearly labeled so I can paste it back into my session log.`;
+
+  navigator.clipboard.writeText(prompt).then(() => showToast('✓ Session prompt copied! Paste into your AI therapist, then upload the result here.', 4000));
+}
+
+// ── UPLOAD SESSION FILE ──
+async function uploadSessionFile(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (!GROQ_KEY) { showToast('Set your Groq API key in Settings first.'); return; }
+
+  const statusBox   = document.getElementById('sess-upload-status');
+  const statusLabel = document.getElementById('sess-upload-label');
+  statusBox.style.display = 'block';
+  statusLabel.textContent = 'Reading file…';
+
+  const text = await file.text();
+  if (!text.trim()) { showToast('File appears empty.'); statusBox.style.display = 'none'; return; }
+
+  statusLabel.textContent = 'Parsing session with AI…';
+
+  try {
+    const raw = await callGroq([
+      { role:'system', content:`You are a clinical session parser. Given a therapy or strategy session transcript, extract the key structured fields. Respond ONLY with valid JSON, no markdown:\n{"title":"...","date":"...","category":"General|Family|Personal|Child|Relationship|Business|Progress","problem":"...","solution":"...","insight":"...","tags":"..."}` },
+      { role:'user',   content:`Parse this session transcript and extract the fields:\n\n${text.slice(0, 6000)}` }
+    ], 600, 0.3, true);
+
+    const parsed = JSON.parse((raw || '').replace(/```json|```/g, '').trim());
+
+    // Populate form fields
+    const fields = { 'sess-title':parsed.title, 'sess-date':parsed.date, 'sess-problem':parsed.problem, 'sess-solution':parsed.solution, 'sess-insight':parsed.insight, 'sess-tags':parsed.tags };
+    Object.entries(fields).forEach(([id, val]) => { const el = document.getElementById(id); if (el && val) el.value = val; });
+
+    // Set category
+    const catEl = document.getElementById('sess-category');
+    if (catEl && parsed.category) {
+      const opt = [...catEl.options].find(o => o.value === parsed.category);
+      if (opt) catEl.value = parsed.category;
+    }
+
+    statusBox.style.display = 'none';
+    showToast('✓ Session parsed. Review the fields and save when ready.');
+  } catch(e) {
+    statusBox.style.display = 'none';
+    showToast('Could not parse file. Try copying the content and pasting manually.');
+  }
+
+  event.target.value = '';
+}
 
 async function generateSessionSummary() {
   const problem  = document.getElementById('sess-problem').value;
@@ -1039,6 +1190,7 @@ function saveSession() {
   if (!title || !problem) { showToast('Title and Problem are required.'); return; }
 
   VAULT.sessions.push({ title, date, category, problem, solution, insight, tags, aiSummary });
+  saveToLocal();
 
   // Switch to sessions tab, then render into the now-visible panel
   const sessBtn = [...document.querySelectorAll('.nav-tab')].find(b => b.textContent.trim() === 'Session Logs');
@@ -1057,6 +1209,7 @@ function saveSession() {
 function deleteSession(idx) {
   if (!confirm('Delete this session from your vault?')) return;
   VAULT.sessions.splice(idx, 1);
+  saveToLocal();
   renderSessions();
   showToast('✓ Session deleted.');
 }
@@ -1101,6 +1254,7 @@ function loadVaultFromFile(event) {
       if (!VAULT.sessions) VAULT.sessions = [];
       if (!VAULT.mediatorHistory) VAULT.mediatorHistory = [];
       if (!VAULT.tabs) VAULT.tabs = deepClone(BLANK_VAULT.tabs);
+      saveToLocal();
       renderAll();
       showToast('✓ Vault loaded. All tabs updated.');
     } catch(err) { showToast('Error: ' + err.message); }
@@ -1109,10 +1263,18 @@ function loadVaultFromFile(event) {
   event.target.value = '';
 }
 
+function clearLocalAndReload() {
+  if (!confirm('Clear local storage? Your vault JSON export is unaffected. The app will reload blank until you import your vault again.')) return;
+  clearLocal();
+  location.reload();
+}
+
 function resetVault() {
   if (!confirm('Reset to a completely blank vault? This clears ALL personal data. Export your vault first if you want a backup.')) return;
   VAULT = deepClone(BLANK_VAULT);
+  clearLocal();
   renderAll();
+  updateStorageIndicator(false);
   showToast('✓ Vault reset. All tabs now show blank state.');
 }
 
@@ -1214,6 +1376,7 @@ function saveVaultEdits() {
   VAULT.business.partnerInsight  = g('ve-businessInsight');
 
   renderAll();
+  saveToLocal();
   closeVaultEditor();
   showToast('✓ Vault updated. All tabs refreshed.');
 }
@@ -1358,6 +1521,7 @@ async function runMediator() {
     // Save to vault
     if (!VAULT.mediatorHistory) VAULT.mediatorHistory = [];
     VAULT.mediatorHistory.unshift({ id:Date.now(), date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), topic, nameA, nameB, mode:medMode, result:parsed });
+    saveToLocal();
     renderMediatorHistory();
     showToast('✓ Mediation report complete.');
   } catch(err) {
@@ -1418,6 +1582,7 @@ function clearMediatorHistory() {
   if (!(VAULT.mediatorHistory||[]).length) return;
   if (!confirm('Clear all mediator history from vault?')) return;
   VAULT.mediatorHistory = [];
+  saveToLocal();
   renderMediatorHistory();
   showToast('✓ History cleared.');
 }
@@ -1441,6 +1606,208 @@ function exportHTML() {
 
 // ════════════════════════════════════════════════════════
 // GROQ API
+// ════════════════════════════════════════════════════════
+// AI CHAT
+// ════════════════════════════════════════════════════════
+let chatHistory = [];   // { role, content } — full conversation for Groq
+let chatRendered = [];  // parallel array of rendered message data for log export
+
+const CHAT_PERSONAS = {
+  therapist: {
+    label: '🧠 Therapist',
+    desc: 'A compassionate, insight-driven therapist. Asks clarifying questions, reflects patterns, gently challenges assumptions. Evidence-based and trauma-informed.',
+    system: `You are a compassionate, insight-driven therapist. Your role is to help the user process their thoughts, feelings, and patterns. Ask one thoughtful follow-up question at a time. Reflect back what you hear. Gently surface patterns and underlying dynamics without judgment. Be warm, direct, and clinically grounded. Keep responses concise — 2-4 sentences, then one question.`
+  },
+  strategist: {
+    label: '📊 Life Strategist',
+    desc: 'A clear-eyed life and business strategist. Focuses on decisions, priorities, trade-offs, and actionable next steps.',
+    system: `You are a sharp, clear-eyed life and business strategist. Help the user think through decisions, priorities, and trade-offs. Focus on outcomes, leverage points, and actionable next steps. Be direct and concise. Ask one focused clarifying question at a time. Responses should be 2-4 sentences plus one question.`
+  },
+  mediator: {
+    label: '⚖ Neutral Mediator',
+    desc: 'A neutral, balanced mediator. Explores multiple perspectives on a situation without taking sides.',
+    system: `You are a neutral, balanced mediator. Help the user explore multiple perspectives on their situation without taking sides. Reflect both sides of any conflict fairly. Ask questions that help the user see things from other perspectives. Keep responses brief — 2-3 sentences plus one perspective-shifting question.`
+  },
+  coach: {
+    label: '🎯 Executive Coach',
+    desc: 'A high-performance executive coach. Focuses on mindset, leadership, and operating at your best under pressure.',
+    system: `You are a high-performance executive coach. Help the user identify what's holding them back, clarify their goals, and build the mindset and habits to operate at their best. Be encouraging but honest. Challenge limiting beliefs. Keep responses focused — 2-3 sentences plus one empowering question.`
+  },
+  journal: {
+    label: '📓 Reflective Journal',
+    desc: 'A thoughtful journaling guide. Prompts deep self-reflection through open-ended questions and observations.',
+    system: `You are a thoughtful journaling guide. Help the user explore their inner world through reflective questions and gentle observations. Focus on self-discovery, not problem-solving. Mirror their language back to them. Ask open-ended questions that invite deeper reflection. Keep responses brief — 1-2 observations plus one open-ended question.`
+  }
+};
+
+function initChat() {
+  updateChatPersonaDesc();
+  document.getElementById('chat-persona').addEventListener('change', () => {
+    if (chatHistory.length > 1) {
+      if (!confirm('Changing persona will start a new session. Continue?')) {
+        document.getElementById('chat-persona').value = currentPersona();
+        return;
+      }
+    }
+    clearChat();
+  });
+}
+
+function currentPersona() {
+  return document.getElementById('chat-persona')?.value || 'therapist';
+}
+
+function updateChatPersonaDesc() {
+  const p = CHAT_PERSONAS[currentPersona()];
+  setT('chat-persona-desc', p ? p.desc : '');
+}
+
+function clearChat() {
+  chatHistory = [];
+  chatRendered = [];
+  document.getElementById('chat-window').innerHTML = '';
+  document.getElementById('chat-msg-count').textContent = '0';
+  document.getElementById('chat-log-btn').style.display = 'none';
+  document.getElementById('chat-status').textContent = '';
+  updateChatPersonaDesc();
+
+  // Post a system greeting
+  const persona = CHAT_PERSONAS[currentPersona()];
+  const greetings = {
+    therapist:  "I'm here and ready to listen. What's on your mind today?",
+    strategist: "Let's get to work. What decision or challenge do you want to think through?",
+    mediator:   "I'm here to help you see the full picture. What situation would you like to explore?",
+    coach:      "Ready when you are. What are we working on today?",
+    journal:    "Take a breath. What feels most present for you right now?"
+  };
+  appendChatBubble('ai', greetings[currentPersona()] || "How can I help you today?");
+}
+
+function chatKeyDown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
+}
+
+async function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const msg   = input.value.trim();
+  if (!msg) return;
+  if (!GROQ_KEY) { showToast('Set your Groq API key in Settings first.'); return; }
+
+  input.value = '';
+  input.style.height = '';
+
+  // Show user bubble
+  appendChatBubble('user', msg);
+  chatHistory.push({ role: 'user', content: msg });
+  chatRendered.push({ role: 'user', content: msg });
+
+  // Show typing indicator
+  const typingId = 'typing-' + Date.now();
+  appendChatBubble('typing', '', typingId);
+
+  document.getElementById('chat-send-btn').disabled = true;
+  document.getElementById('chat-status').textContent = 'Thinking…';
+
+  // Build messages for Groq: system prompt + history
+  const persona = CHAT_PERSONAS[currentPersona()];
+  const systemMsg = { role: 'system', content: persona.system };
+  const messages  = [systemMsg, ...chatHistory];
+
+  try {
+    const reply = await callGroq(messages, 500, 0.75);
+
+    // Remove typing indicator
+    document.getElementById(typingId)?.remove();
+
+    // Add AI bubble
+    appendChatBubble('ai', reply);
+    chatHistory.push({ role: 'assistant', content: reply });
+    chatRendered.push({ role: 'assistant', content: reply });
+
+    // Update count and show Log button after first real exchange
+    const userCount = chatHistory.filter(m => m.role === 'user').length;
+    document.getElementById('chat-msg-count').textContent = userCount;
+    if (userCount >= 2) document.getElementById('chat-log-btn').style.display = '';
+
+  } catch(e) {
+    document.getElementById(typingId)?.remove();
+    appendChatBubble('system', '⚠ Could not reach AI. Check your API key in Settings.');
+  }
+
+  document.getElementById('chat-send-btn').disabled = false;
+  document.getElementById('chat-status').textContent = '';
+  input.focus();
+}
+
+function appendChatBubble(role, content, id) {
+  const win  = document.getElementById('chat-window');
+  const wrap = document.createElement('div');
+  wrap.className = `chat-row ${role}`;
+  if (id) wrap.id = id;
+
+  const now = new Date().toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+
+  if (role === 'typing') {
+    wrap.innerHTML = `<div class="chat-bubble typing"><div class="chat-typing-dots"><span></span><span></span><span></span></div></div>`;
+  } else if (role === 'system') {
+    wrap.innerHTML = `<div class="chat-bubble system">${esc(content)}</div>`;
+  } else {
+    // Format AI content: bold **text**, line breaks
+    const formatted = esc(content)
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\n/g, '<br>');
+    wrap.innerHTML = `
+      <div class="chat-bubble ${role}">${formatted}</div>
+      <div class="chat-meta ${role}">${role === 'user' ? 'You' : CHAT_PERSONAS[currentPersona()]?.label || 'AI'} · ${now}</div>`;
+  }
+
+  win.appendChild(wrap);
+  win.scrollTop = win.scrollHeight;
+}
+
+// ── LOG CHAT TO SESSION ──
+async function logChatSession() {
+  if (!chatRendered.length) { showToast('No conversation to log yet.'); return; }
+  if (!GROQ_KEY) { showToast('Set your Groq API key in Settings first.'); return; }
+
+  const logBtn = document.getElementById('chat-log-btn');
+  logBtn.textContent = '⏳ Summarizing…';
+  logBtn.disabled = true;
+
+  const transcript = chatRendered
+    .filter(m => m.role !== 'system')
+    .map(m => `${m.role === 'user' ? 'Me' : 'AI'}: ${m.content}`)
+    .join('\n\n');
+
+  try {
+    const raw = await callGroq([
+      { role:'system', content:`You are a clinical session summarizer. Given a therapy or strategy chat transcript, extract the structured session fields. Respond ONLY with valid JSON, no markdown:\n{"title":"...","date":"${new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})}","category":"General|Family|Personal|Child|Relationship|Business|Progress","problem":"2-4 sentence summary of the main challenge discussed","solution":"2-4 sentence summary of strategies, insights, or observations that emerged","insight":"Single most important takeaway sentence","tags":"comma separated keywords"}` },
+      { role:'user', content:`Summarize this session:\n\n${transcript.slice(0, 5000)}` }
+    ], 700, 0.3, true);
+
+    const parsed = JSON.parse((raw || '').replace(/```json|```/g, '').trim());
+
+    // Pre-fill the Add Session modal
+    const fields = { 'sess-title':parsed.title, 'sess-date':parsed.date, 'sess-problem':parsed.problem, 'sess-solution':parsed.solution, 'sess-insight':parsed.insight, 'sess-tags':parsed.tags };
+    Object.entries(fields).forEach(([id, val]) => { const el = document.getElementById(id); if (el && val) el.value = val; });
+    const catEl = document.getElementById('sess-category');
+    if (catEl && parsed.category) { const opt = [...catEl.options].find(o=>o.value===parsed.category); if(opt) catEl.value=parsed.category; }
+
+    // Clear AI summary area so user can regenerate if they want
+    document.getElementById('sess-ai-result').style.display = 'none';
+    document.getElementById('sess-ai-content').textContent = '';
+
+    // Open the modal
+    openAddSessionModal();
+    showToast('✓ Chat summarized. Review the fields and save to vault.');
+  } catch(e) {
+    showToast('Could not summarize session. Try again or fill manually.');
+  }
+
+  logBtn.textContent = '↓ Log This Session';
+  logBtn.disabled = false;
+}
+
 // ════════════════════════════════════════════════════════
 async function callGroq(messages, maxTokens=400, temperature=0.5, raw=false) {
   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
@@ -1472,15 +1839,79 @@ function showToast(msg, ms=3500) {
 }
 
 // ════════════════════════════════════════════════════════
+// LOCAL STORAGE — AUTO-SAVE & AUTO-LOAD
+// ════════════════════════════════════════════════════════
+const LS_KEY = 'lazzaro_wellness_vault_v3';
+
+function saveToLocal() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(VAULT));
+    updateStorageIndicator(true);
+  } catch(e) {
+    // localStorage full or blocked — fail silently, user can still export vault
+    console.warn('localStorage save failed:', e.message);
+  }
+}
+
+function loadFromLocal() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) return false;
+    const parsed = JSON.parse(raw);
+    // Basic sanity check — must have at least meta and sessions
+    if (!parsed || !parsed.meta || !Array.isArray(parsed.sessions)) return false;
+    VAULT = parsed;
+    // Ensure all required arrays exist for older saved versions
+    if (!VAULT.mediatorHistory) VAULT.mediatorHistory = [];
+    if (!VAULT.tabs)            VAULT.tabs = deepClone(BLANK_VAULT.tabs);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
+function clearLocal() {
+  try { localStorage.removeItem(LS_KEY); } catch(e) {}
+}
+
+function updateStorageIndicator(saved) {
+  const el = document.getElementById('storage-indicator');
+  if (!el) return;
+  const size = (() => {
+    try {
+      const bytes = (localStorage.getItem(LS_KEY)||'').length * 2;
+      return bytes > 1024 ? `${(bytes/1024).toFixed(1)}kb` : `${bytes}b`;
+    } catch(e) { return '—'; }
+  })();
+  el.textContent = saved ? `● Saved locally · ${size}` : '○ Not saved';
+  el.style.color  = saved ? 'var(--green)' : 'var(--text-muted)';
+}
+
+// ════════════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', function() {
+  // Try to restore from localStorage first
+  const restored = loadFromLocal();
   renderAll();
+  initChat();
+  clearChat();
+
+  if (restored) {
+    updateStorageIndicator(true);
+    showToast('✓ Vault restored from local storage.', 2500);
+  } else {
+    updateStorageIndicator(false);
+  }
+
   // Modal backdrop close
   ['addSessionModal','keyModal','modelModal','vaultModal'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', function(e) { if(e.target===this) this.classList.remove('open'); });
   });
+
+  // Save on page unload as a final safety net
+  window.addEventListener('beforeunload', saveToLocal);
 });
 </script>
 </body>
