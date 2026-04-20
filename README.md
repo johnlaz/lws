@@ -1,2 +1,2 @@
-# lws
-Laz Wellness Suite Therapy, Private Strategy &amp; Behavioral Record
+# Wellness Strategy Suite 
+Wellness Suite - Therapy, Private Strategy & Behavioral Record
