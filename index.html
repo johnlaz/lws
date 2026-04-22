@@ -309,6 +309,106 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .toast{position:fixed;bottom:2rem;right:2rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 20px;font-size:13px;color:var(--text);z-index:9999;display:none;animation:slideUp .3s ease;max-width:360px;}
 @keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
 
+
+/* ── MEDICAL TAB ── */
+.med-tab-hero{background:linear-gradient(135deg,rgba(16,185,129,.07),rgba(59,130,246,.06),rgba(139,92,246,.05));border:1px solid rgba(16,185,129,.2);border-radius:14px;padding:1.75rem 2rem;margin-bottom:1.75rem;display:flex;align-items:center;gap:1.5rem;}
+.med-tab-hero-icon{font-size:2.8rem;flex-shrink:0;}
+.med-tab-hero-title{font-family:var(--font-display);font-size:22px;color:var(--text);margin-bottom:4px;}
+.med-tab-hero-sub{color:var(--text-muted);font-size:13px;line-height:1.7;max-width:600px;}
+.med-sub-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.75rem;}
+.med-sub-tab{padding:11px 20px;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.med-sub-tab:hover{color:var(--text-dim);}
+.med-sub-tab.active{color:var(--green);border-bottom-color:var(--green);}
+.med-sub-panel{display:none;}.med-sub-panel.active{display:block;}
+.sym-layout{display:grid;grid-template-columns:1fr 360px;gap:1.5rem;align-items:start;}
+.sym-chat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;height:560px;}
+.sym-chat-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.sym-pulse{width:8px;height:8px;border-radius:50%;background:var(--green);animation:symPulse 2s ease-in-out infinite;flex-shrink:0;}
+@keyframes symPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
+.sym-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;}
+.sym-messages::-webkit-scrollbar{width:4px;}.sym-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+.sym-msg{max-width:85%;display:flex;flex-direction:column;gap:3px;}
+.sym-msg.user{align-self:flex-end;align-items:flex-end;}
+.sym-msg.ai{align-self:flex-start;align-items:flex-start;}
+.sym-bubble{padding:10px 14px;border-radius:12px;font-size:13.5px;line-height:1.65;word-wrap:break-word;}
+.sym-msg.user .sym-bubble{background:linear-gradient(135deg,rgba(16,185,129,.22),rgba(16,185,129,.12));border:1px solid rgba(16,185,129,.3);color:var(--text);border-bottom-right-radius:3px;}
+.sym-msg.ai .sym-bubble{background:var(--surface2);border:1px solid var(--border);color:var(--text-dim);border-bottom-left-radius:3px;}
+.sym-bubble strong{color:var(--text);}
+.sym-meta{font-size:11px;color:var(--text-muted);padding:0 3px;}
+.sym-typing{align-self:flex-start;}
+.sym-typing-bubble{background:var(--surface2);border:1px solid var(--border);border-radius:12px;border-bottom-left-radius:3px;padding:13px 16px;display:flex;gap:5px;align-items:center;}
+.sym-dot{width:6px;height:6px;border-radius:50%;background:var(--text-muted);animation:symDot 1.2s ease-in-out infinite;}
+.sym-dot:nth-child(2){animation-delay:.2s;}.sym-dot:nth-child(3){animation-delay:.4s;}
+@keyframes symDot{0%,80%,100%{transform:translateY(0);}40%{transform:translateY(-5px);}}
+.sym-input-row{padding:12px;border-top:1px solid var(--border);display:flex;gap:8px;}
+.sym-input{flex:1;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 13px;color:var(--text);font-family:var(--font-body);font-size:13px;outline:none;resize:none;max-height:90px;min-height:38px;transition:border-color .2s;line-height:1.5;}
+.sym-input:focus{border-color:var(--green);}
+.sym-input::placeholder{color:var(--text-muted);}
+.sym-send{background:var(--green);border:none;border-radius:8px;width:38px;height:38px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;}
+.sym-send:hover{background:#0da872;transform:scale(1.05);}.sym-send:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.sym-send svg{width:16px;height:16px;fill:white;}
+.sym-clear{background:transparent;border:1px solid var(--border);border-radius:8px;width:38px;height:38px;cursor:pointer;color:var(--text-muted);font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0;}
+.sym-clear:hover{border-color:var(--red);color:var(--red);}
+.advice-stack{display:flex;flex-direction:column;gap:12px;}
+.advice-empty-state{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2.5rem 1.5rem;text-align:center;color:var(--text-muted);font-size:13px;line-height:1.8;}
+.advice-empty-state .aei{font-size:2.2rem;margin-bottom:10px;display:block;opacity:.6;}
+.adv-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;animation:advIn .35s ease;}
+@keyframes advIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.adv-card-head{padding:11px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.adv-icon{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.adv-icon-remedy{background:rgba(16,185,129,.12);}.adv-icon-otc{background:rgba(245,158,11,.12);}
+.adv-icon-pro{background:rgba(239,68,68,.12);}.adv-icon-assess{background:rgba(59,130,246,.12);}
+.adv-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+.adv-label-remedy{color:var(--green);}.adv-label-otc{color:var(--amber);}
+.adv-label-pro{color:var(--red);}.adv-label-assess{color:var(--blue);}
+.adv-card-body{padding:12px 15px;font-size:13px;color:var(--text-dim);line-height:1.7;}
+.adv-list{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:6px;}
+.adv-list li{padding:6px 10px;background:var(--surface2);border-radius:7px;display:flex;align-items:flex-start;gap:7px;font-size:12.5px;line-height:1.5;}
+.adv-list li::before{content:"›";color:var(--green);font-weight:700;flex-shrink:0;}
+.adv-urgency{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;background:var(--surface2);margin-top:6px;}
+.adv-urgency-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.adv-urgency span{font-size:12.5px;color:var(--text-dim);}
+.med-disclaimer{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--red);line-height:1.6;margin-top:4px;}
+.lab-layout{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start;}
+.lab-upload-zone{background:var(--surface);border:2px dashed var(--border);border-radius:12px;padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:all .2s;}
+.lab-upload-zone:hover,.lab-upload-zone.dragover{border-color:var(--teal);background:rgba(45,212,191,.04);}
+.lab-upload-zone h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;font-family:var(--font-display);}
+.lab-upload-zone p{font-size:13px;color:var(--text-muted);line-height:1.6;}
+.lab-upload-icon{font-size:2.5rem;display:block;margin-bottom:10px;opacity:.7;}
+.lab-selected-file{background:rgba(45,212,191,.06);border:1px solid rgba(45,212,191,.25);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--teal);display:flex;align-items:center;gap:10px;margin-top:12px;}
+.lab-analysis-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:1.25rem;}
+.lab-analysis-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+.lab-analysis-title{font-size:14px;font-weight:600;color:var(--text);font-family:var(--font-display);}
+.lab-analysis-body{padding:16px 18px;max-height:480px;overflow-y:auto;font-size:13px;color:var(--text-dim);line-height:1.8;}
+.lab-analysis-body::-webkit-scrollbar{width:4px;}.lab-analysis-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+.lab-flag{padding:7px 12px;border-radius:7px;margin-bottom:6px;font-size:12.5px;display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.lab-flag.high{background:rgba(239,68,68,.07);border-left:3px solid var(--red);color:var(--text);}
+.lab-flag.low{background:rgba(245,158,11,.07);border-left:3px solid var(--amber);color:var(--text);}
+.lab-flag.normal{background:rgba(16,185,129,.07);border-left:3px solid var(--green);color:var(--text);}
+.lab-flag-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.lab-flag-dot.high{background:var(--red);}.lab-flag-dot.low{background:var(--amber);}.lab-flag-dot.normal{background:var(--green);}
+.lab-section{margin-bottom:16px;}
+.lab-section h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.lab-section p{margin-bottom:6px;}
+.lab-list-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.lab-list-header{padding:11px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.lab-list-header span{font-size:13px;font-weight:600;color:var(--text);}
+.lab-list-scroll{max-height:400px;overflow-y:auto;}
+.lab-list-scroll::-webkit-scrollbar{width:4px;}.lab-list-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px;}
+.lab-item{padding:11px 14px;border-bottom:1px solid rgba(30,45,66,.6);display:flex;align-items:flex-start;gap:10px;cursor:pointer;transition:background .12s;}
+.lab-item:last-child{border-bottom:none;}.lab-item:hover{background:rgba(255,255,255,.02);}
+.lab-item.active{background:rgba(45,212,191,.06);border-left:2px solid var(--teal);}
+.lab-item-icon{width:32px;height:32px;border-radius:7px;background:rgba(45,212,191,.1);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.lab-item-info{flex:1;min-width:0;}
+.lab-item-name{font-size:12.5px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px;}
+.lab-item-meta{font-size:11px;color:var(--text-muted);}
+.lab-item-del{background:transparent;border:1px solid var(--border);border-radius:5px;width:22px;height:22px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);font-size:12px;flex-shrink:0;transition:all .12s;}
+.lab-item-del:hover{border-color:var(--red);color:var(--red);}
+.lab-empty{padding:2rem 1rem;text-align:center;color:var(--text-muted);font-size:12.5px;line-height:1.8;}
+.lab-progress{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin:0 18px 6px;}
+.lab-progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--green));border-radius:2px;animation:labLoad 1.4s ease-in-out infinite;}
+@keyframes labLoad{0%{transform:translateX(-100%);}100%{transform:translateX(200%);}}
+
 /* ── RESPONSIVE ── */
 @media(max-width:900px){.grid-3,.grid-4{grid-template-columns:1fr 1fr;}.option-pros-cons{grid-template-columns:1fr;}}
 @media(max-width:640px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}.main{padding:1rem;}.med-upload-grid{grid-template-columns:1fr;}.med-vs{display:none;}.med-perspectives-grid,.med-context-row{grid-template-columns:1fr;}.prob-sol{grid-template-columns:1fr;}}
@@ -632,6 +732,152 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
     </div>
   </div>
 
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- MEDICAL TAB                                            -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div id="panel-medical" class="panel">
+
+    <!-- Hero -->
+    <div class="med-tab-hero">
+      <div class="med-tab-hero-icon">🏥</div>
+      <div>
+        <div class="med-tab-hero-title">Medical Advisor</div>
+        <div class="med-tab-hero-sub">Describe symptoms for an AI-guided assessment with home remedy, OTC, and professional care advice — or upload lab reports for a detailed diagnostic review saved to your vault.</div>
+      </div>
+    </div>
+
+    <!-- Sub-tab bar -->
+    <div class="med-sub-tabs">
+      <button class="med-sub-tab active" onclick="switchMedSubTab('med-symptom',this)">🩺 Symptom Checker</button>
+      <button class="med-sub-tab" onclick="switchMedSubTab('med-labs',this)">🔬 Lab Diagnosis</button>
+    </div>
+
+    <!-- ── SYMPTOM CHECKER ── -->
+    <div id="med-symptom" class="med-sub-panel active">
+      <div class="sym-layout">
+
+        <!-- Chat column -->
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+              <div class="section-title" style="font-size:17px;margin-bottom:2px;">Symptom Conversation</div>
+              <div class="section-sub" style="margin-bottom:0;">Describe what you are feeling — the AI will ask follow-up questions and generate advice cards.</div>
+            </div>
+          </div>
+          <div class="sym-chat-box">
+            <div class="sym-chat-header">
+              <div class="sym-pulse"></div>
+              <span style="font-size:13px;font-weight:600;color:var(--text);">Medical Assistant</span>
+              <span style="font-size:11px;color:var(--text-muted);margin-left:auto;" id="sym-msg-count">0 messages</span>
+            </div>
+            <div class="sym-messages" id="sym-messages">
+              <div class="sym-msg ai">
+                <div class="sym-bubble">Hello! I'm your medical assistant. Tell me what symptoms you are experiencing and I'll help assess them, ask follow-up questions, and provide personalised advice. What are you feeling?</div>
+                <span class="sym-meta">Medical AI</span>
+              </div>
+            </div>
+            <div class="sym-typing" id="sym-typing" style="display:none;padding:0 14px 10px;">
+              <div class="sym-typing-bubble">
+                <div class="sym-dot"></div><div class="sym-dot"></div><div class="sym-dot"></div>
+              </div>
+            </div>
+            <div class="sym-input-row">
+              <textarea class="sym-input" id="sym-input" placeholder="Describe your symptoms…" rows="1" onkeydown="symKeyDown(event)" oninput="symAutoResize(this)"></textarea>
+              <button class="sym-clear" onclick="clearSymptomChat()" title="New conversation">↺</button>
+              <button class="sym-send" id="sym-send" onclick="sendSymptomMessage()">
+                <svg viewBox="0 0 24 24"><path d="M2 21L23 12 2 3v7l15 2-15 2v7z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Advice cards column -->
+        <div>
+          <div class="section-title" style="font-size:15px;margin-bottom:12px;">Advice Cards</div>
+          <div class="advice-stack" id="advice-stack">
+            <div class="advice-empty-state">
+              <span class="aei">💊</span>
+              Advice cards appear here once the AI has enough information.<br><br>Cards update automatically as the conversation develops.
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end sym-layout -->
+    </div><!-- end med-symptom -->
+
+    <!-- ── LAB DIAGNOSIS ── -->
+    <div id="med-labs" class="med-sub-panel">
+      <div class="lab-layout">
+
+        <!-- Upload + analysis column -->
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+            <div>
+              <div class="section-title" style="font-size:17px;margin-bottom:2px;">Lab Report Analysis</div>
+              <div class="section-sub" style="margin-bottom:0;">Upload a lab report (PDF, image, or text) and get a full AI review — flagged values, patterns, and questions to bring to your doctor.</div>
+            </div>
+            <div style="display:flex;gap:8px;flex-shrink:0;">
+              <button class="btn btn-ghost btn-sm" onclick="exportMedLabs()">⬇ Export</button>
+              <label class="btn btn-ghost btn-sm" style="cursor:pointer;">⬆ Import<input type="file" id="lab-import-file" accept=".json" style="display:none" onchange="importMedLabs(event)"></label>
+            </div>
+          </div>
+
+          <!-- Drop zone -->
+          <div class="lab-upload-zone" id="lab-drop-zone"
+            ondragover="labDragOver(event)" ondragleave="labDragLeave(event)" ondrop="labDrop(event)"
+            onclick="document.getElementById('lab-file-input').click()">
+            <input type="file" id="lab-file-input" accept=".pdf,.txt,.csv,.png,.jpg,.jpeg" style="display:none" onchange="labFileSelected(event)">
+            <span class="lab-upload-icon">🔬</span>
+            <h3>Upload Lab Report</h3>
+            <p>Drag &amp; drop or click — PDF, image, or plain text</p>
+          </div>
+          <div id="lab-selected-display" style="display:none;" class="lab-selected-file">
+            <span>📄</span>
+            <span id="lab-selected-name" style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;"></span>
+            <button class="btn btn-primary btn-sm" id="lab-review-btn" onclick="runLabReview()">✦ Review &amp; Advise</button>
+          </div>
+
+          <!-- Analysis output -->
+          <div id="lab-analysis-wrap" style="display:none;">
+            <div class="lab-analysis-box">
+              <div class="lab-analysis-head">
+                <span class="lab-analysis-title" id="lab-analysis-title">Lab Analysis</span>
+                <div style="display:flex;gap:8px;align-items:center;">
+                  <span id="lab-analyzing-badge" style="display:none;" class="badge badge-teal"><span class="spinner" style="border-color:rgba(45,212,191,.3);border-top-color:var(--teal);"></span> &nbsp;Analyzing…</span>
+                  <button class="btn btn-teal btn-sm" id="lab-save-btn" style="display:none;" onclick="saveLabAnalysis()">💾 Save to Vault</button>
+                </div>
+              </div>
+              <div id="lab-progress" style="display:none;padding:6px 0 2px;">
+                <div class="lab-progress"><div class="lab-progress-fill"></div></div>
+                <div style="font-size:11px;color:var(--text-muted);text-align:center;padding-bottom:4px;">Reviewing report…</div>
+              </div>
+              <div class="lab-analysis-body" id="lab-analysis-body">
+                <div style="text-align:center;color:var(--text-muted);padding:20px;">Upload a report to begin.</div>
+              </div>
+            </div>
+            <div class="med-disclaimer" style="margin-top:12px;">⚠️ This AI analysis is for informational purposes only. Always discuss results with your licensed healthcare provider before making any decisions.</div>
+          </div>
+        </div>
+
+        <!-- Saved labs sidebar -->
+        <div>
+          <div class="lab-list-card">
+            <div class="lab-list-header">
+              <span>Saved Reports</span>
+              <span class="badge badge-teal" id="lab-vault-count">0 saved</span>
+            </div>
+            <div class="lab-list-scroll" id="lab-vault-list">
+              <div class="lab-empty">No reports saved yet.<br>Upload, review, and save to build your history.</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end lab-layout -->
+    </div><!-- end med-labs -->
+
+  </div><!-- end panel-medical -->
+
 </div><!-- end .main -->
 
 <!-- ADD SESSION MODAL -->
@@ -740,7 +986,8 @@ const BLANK_VAULT = {
     { id:"future",   label:"Path Forward",     icon:"",   tool:false },
     { id:"sessions", label:"Session Logs",     icon:"",   tool:true  },
     { id:"mediator", label:"⚡ Mediator",       icon:"",   tool:true  },
-    { id:"chat",     label:"💬 AI Chat",        icon:"",   tool:true  }
+    { id:"chat",     label:"💬 AI Chat",        icon:"",   tool:true  },
+    { id:"medical",  label:"🏥 Medical",        icon:"",   tool:true  }
   ],
   audit: {
     title: "Overview",
@@ -792,7 +1039,8 @@ const BLANK_VAULT = {
     timeline: []
   },
   sessions: [],
-  mediatorHistory: []
+  mediatorHistory: [],
+  medicalLabVault: []
 };
 
 // ════════════════════════════════════════════════════════
@@ -847,6 +1095,7 @@ function renderAll() {
   renderFuture();
   renderSessions();
   renderMediatorHistory();
+  renderMedLabList();
 }
 
 // ── AUDIT ──
@@ -1254,6 +1503,7 @@ function loadVaultFromFile(event) {
       if (!VAULT.sessions) VAULT.sessions = [];
       if (!VAULT.mediatorHistory) VAULT.mediatorHistory = [];
       if (!VAULT.tabs) VAULT.tabs = deepClone(BLANK_VAULT.tabs);
+      if (!VAULT.medicalLabVault) VAULT.medicalLabVault = [];
       saveToLocal();
       renderAll();
       showToast('✓ Vault loaded. All tabs updated.');
@@ -1298,7 +1548,7 @@ function openVaultEditor() {
     <div class="vault-section">
       <div class="vault-section-head" onclick="toggleVS(this)">Tab Labels</div>
       <div class="vault-section-body">
-        <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">Rename tabs to match your use case. Tool tabs (Session Logs, Mediator) always appear last.</p>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:10px;">Rename tabs to match your use case. Tool tabs (Session Logs, Mediator, Medical) always appear last.</p>
         ${V.tabs.map((t,i) => `<div class="vault-field"><label>${t.tool ? '🔧 ' : ''}${t.id}</label><input id="ve-tab-${i}" value="${esc(t.label)}"></div>`).join('')}
       </div>
     </div>
@@ -1821,6 +2071,404 @@ async function callGroq(messages, maxTokens=400, temperature=0.5, raw=false) {
   return raw ? content : content.trim();
 }
 
+
+// ════════════════════════════════════════════════════════
+// MEDICAL TAB — SYMPTOM CHECKER + LAB DIAGNOSIS
+// Uses existing GROQ_KEY / GROQ_MODEL / callGroq
+// ════════════════════════════════════════════════════════
+
+// ── STATE ──
+let symChatHistory = [];
+let symMsgCount = 0;
+let labPendingFile = null;        // File object waiting for review
+let labPendingBase64 = null;      // base64 string for image/pdf
+let labCurrentEntry = null;       // { name, date, analysis } being shown
+
+// ── INIT ──
+function initMedicalTab() {
+  // nothing to pre-render — renderMedLabList called from renderAll
+}
+
+// ── SUB-TAB SWITCH ──
+function switchMedSubTab(id, btn) {
+  document.querySelectorAll('.med-sub-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.med-sub-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ════════════════════════════════
+// SYMPTOM CHECKER
+// ════════════════════════════════
+function symAutoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 90) + 'px';
+}
+
+function symKeyDown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendSymptomMessage(); }
+}
+
+function addSymMessage(role, text) {
+  const win = document.getElementById('sym-messages');
+  const wrap = document.createElement('div');
+  wrap.className = 'sym-msg ' + (role === 'user' ? 'user' : 'ai');
+  const now = new Date().toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit' });
+  const formatted = esc(text).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>');
+  wrap.innerHTML = `<div class="sym-bubble">${formatted}</div><span class="sym-meta">${role === 'user' ? 'You' : 'Medical AI'} · ${now}</span>`;
+  win.appendChild(wrap);
+  win.scrollTop = win.scrollHeight;
+  symMsgCount++;
+  document.getElementById('sym-msg-count').textContent = symMsgCount + ' messages';
+}
+
+function symShowTyping(show) {
+  document.getElementById('sym-typing').style.display = show ? 'block' : 'none';
+  document.getElementById('sym-messages').scrollTop = document.getElementById('sym-messages').scrollHeight;
+}
+
+function clearSymptomChat() {
+  symChatHistory = [];
+  symMsgCount = 0;
+  document.getElementById('sym-msg-count').textContent = '0 messages';
+  document.getElementById('sym-messages').innerHTML = `<div class="sym-msg ai"><div class="sym-bubble">Hello! I'm your medical assistant. Tell me what symptoms you are experiencing and I'll help assess them, ask follow-up questions, and provide personalised advice. What are you feeling?</div><span class="sym-meta">Medical AI</span></div>`;
+  document.getElementById('advice-stack').innerHTML = `<div class="advice-empty-state"><span class="aei">💊</span>Advice cards appear here once the AI has enough information.<br><br>Cards update automatically as the conversation develops.</div>`;
+}
+
+async function sendSymptomMessage() {
+  if (!GROQ_KEY) { showToast('Set your Groq API key in Settings first.'); return; }
+  const input = document.getElementById('sym-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  addSymMessage('user', text);
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('sym-send').disabled = true;
+  symShowTyping(true);
+
+  symChatHistory.push({ role: 'user', content: text });
+
+  const systemPrompt = `You are a compassionate, knowledgeable medical AI assistant. Your role:
+1. Listen carefully to symptoms described by the user.
+2. Ask ONE targeted follow-up question at a time to narrow down the likely condition (duration, severity, location, associated symptoms, relevant history).
+3. After gathering enough information (typically 3-5 exchanges), provide a structured assessment.
+
+When you have enough information, append a JSON block at the END of your message in EXACTLY this format — nothing after the closing tag:
+<ADVICE_JSON>
+{"condition":"Most likely condition name","confidence":"low|medium|high","home_remedies":["remedy 1","remedy 2","remedy 3"],"otc_options":["product 1","product 2"],"see_doctor_if":["warning sign 1","warning sign 2"],"urgency":"routine|soon|urgent|emergency"}
+</ADVICE_JSON>
+
+Only include the JSON once you are confident enough to give actionable advice. Keep responses warm, concise, and clear. Never claim to diagnose definitively.`;
+
+  try {
+    const raw = await callGroq(
+      [{ role: 'system', content: systemPrompt }, ...symChatHistory],
+      700, 0.5, true
+    );
+
+    symShowTyping(false);
+
+    const jsonMatch = raw.match(/<ADVICE_JSON>([\s\S]*?)<\/ADVICE_JSON>/);
+    const displayText = raw.replace(/<ADVICE_JSON>[\s\S]*?<\/ADVICE_JSON>/g, '').trim();
+
+    addSymMessage('ai', displayText);
+    symChatHistory.push({ role: 'assistant', content: raw });
+
+    if (jsonMatch) {
+      try { renderAdviceCards(JSON.parse(jsonMatch[1].trim())); } catch(e) {}
+    }
+  } catch(err) {
+    symShowTyping(false);
+    addSymMessage('ai', '⚠ Could not reach AI. Check your Groq API key in Settings.');
+  }
+
+  document.getElementById('sym-send').disabled = false;
+}
+
+function renderAdviceCards(advice) {
+  const urgencyColors = { routine: 'var(--green)', soon: 'var(--amber)', urgent: 'var(--red)', emergency: 'var(--red)' };
+  const urgencyLabels = { routine: 'Routine — see doctor at your convenience', soon: 'See a doctor soon', urgent: 'Seek care promptly', emergency: 'Seek emergency care immediately' };
+  const stack = document.getElementById('advice-stack');
+
+  stack.innerHTML = `
+    <div class="adv-card" style="border-top:3px solid var(--blue);">
+      <div class="adv-card-head">
+        <div class="adv-icon adv-icon-assess">🧠</div>
+        <div style="flex:1;">
+          <div class="adv-label adv-label-assess">Assessment</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text);margin-top:2px;">${esc(advice.condition)}</div>
+        </div>
+        <span class="badge badge-info" style="flex-shrink:0;">${esc(advice.confidence || '')} confidence</span>
+      </div>
+      <div class="adv-card-body">
+        <div class="adv-urgency">
+          <div class="adv-urgency-dot" style="background:${urgencyColors[advice.urgency]||'var(--text-muted)'};"></div>
+          <span>${urgencyLabels[advice.urgency] || esc(advice.urgency || '')}</span>
+        </div>
+      </div>
+    </div>
+
+    ${advice.home_remedies && advice.home_remedies.length ? `
+    <div class="adv-card" style="border-top:3px solid var(--green);">
+      <div class="adv-card-head">
+        <div class="adv-icon adv-icon-remedy">🌿</div>
+        <div class="adv-label adv-label-remedy">Home Remedies</div>
+      </div>
+      <div class="adv-card-body">
+        <ul class="adv-list">${advice.home_remedies.map(r=>`<li>${esc(r)}</li>`).join('')}</ul>
+      </div>
+    </div>` : ''}
+
+    ${advice.otc_options && advice.otc_options.length ? `
+    <div class="adv-card" style="border-top:3px solid var(--amber);">
+      <div class="adv-card-head">
+        <div class="adv-icon adv-icon-otc">💊</div>
+        <div class="adv-label adv-label-otc">Over-the-Counter Options</div>
+      </div>
+      <div class="adv-card-body">
+        <ul class="adv-list">${advice.otc_options.map(o=>`<li>${esc(o)}</li>`).join('')}</ul>
+      </div>
+    </div>` : ''}
+
+    ${advice.see_doctor_if && advice.see_doctor_if.length ? `
+    <div class="adv-card" style="border-top:3px solid var(--red);">
+      <div class="adv-card-head">
+        <div class="adv-icon adv-icon-pro">🏥</div>
+        <div class="adv-label adv-label-pro">See a Doctor If…</div>
+      </div>
+      <div class="adv-card-body">
+        <ul class="adv-list">${advice.see_doctor_if.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>
+      </div>
+    </div>` : ''}
+
+    <div class="med-disclaimer">⚠️ AI-generated guidance only — not a medical diagnosis. Always consult a licensed healthcare professional.</div>
+  `;
+}
+
+// ════════════════════════════════
+// LAB DIAGNOSIS
+// ════════════════════════════════
+function labDragOver(e) { e.preventDefault(); document.getElementById('lab-drop-zone').classList.add('dragover'); }
+function labDragLeave()  { document.getElementById('lab-drop-zone').classList.remove('dragover'); }
+function labDrop(e) {
+  e.preventDefault(); labDragLeave();
+  const f = e.dataTransfer.files[0]; if (f) stagLabFile(f);
+}
+function labFileSelected(e) {
+  const f = e.target.files[0]; if (f) stagLabFile(f);
+  e.target.value = '';
+}
+
+async function stagLabFile(file) {
+  labPendingFile = file;
+  labPendingBase64 = null;
+  document.getElementById('lab-selected-name').textContent = file.name;
+  document.getElementById('lab-selected-display').style.display = 'flex';
+  document.getElementById('lab-review-btn').disabled = false;
+  document.getElementById('lab-review-btn').textContent = '✦ Review & Advise';
+
+  if (file.type.startsWith('image/') || file.type === 'application/pdf') {
+    labPendingBase64 = await readAsBase64(file);
+  }
+}
+
+async function runLabReview() {
+  if (!GROQ_KEY) { showToast('Set your Groq API key in Settings first.'); return; }
+  if (!labPendingFile) { showToast('Select a file first.'); return; }
+
+  const btn = document.getElementById('lab-review-btn');
+  btn.disabled = true; btn.textContent = '⏳ Analyzing…';
+
+  document.getElementById('lab-analysis-wrap').style.display = 'block';
+  document.getElementById('lab-analysis-title').textContent = labPendingFile.name;
+  document.getElementById('lab-analyzing-badge').style.display = 'flex';
+  document.getElementById('lab-progress').style.display = 'block';
+  document.getElementById('lab-save-btn').style.display = 'none';
+  document.getElementById('lab-analysis-body').innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:20px;">Reading your report…</div>';
+
+  labCurrentEntry = { name: labPendingFile.name, date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}), analysis: null };
+
+  const systemPrompt = `You are a medical AI that reviews lab reports. Analyse the provided data and respond with these exact section headers on their own lines:
+
+## Summary
+## Key Values
+## Patterns & Insights
+## Questions for Your Doctor
+## Wellness Suggestions
+
+For the Key Values section format every line as: [HIGH] Marker: value — brief explanation, or [LOW] or [NORMAL]. One item per line. Be thorough and compassionate. Remind the user to discuss with their doctor.`;
+
+  try {
+    let userContent;
+
+    if (labPendingFile.type.startsWith('image/') && labPendingBase64) {
+      // Groq supports vision for some models — send as text description fallback
+      // Describe the file and ask for analysis from the extracted base64 context
+      // Groq vision: use llava or similar if available, otherwise extract text first
+      const txtContent = await readAsText(labPendingFile).catch(()=> '[Binary image file — extract OCR not available in text mode]');
+      userContent = `Lab report file: ${labPendingFile.name}\n\nFile contents or OCR text:\n${txtContent.slice(0,8000)}`;
+    } else if (labPendingFile.type === 'application/pdf') {
+      const txtContent = await readAsText(labPendingFile).catch(()=>'[PDF binary — text extraction limited]');
+      userContent = `Lab report PDF: ${labPendingFile.name}\n\n${txtContent.slice(0,8000)}`;
+    } else {
+      const txt = await readAsText(labPendingFile);
+      userContent = `Lab report: ${labPendingFile.name}\n\n${txt.slice(0,8000)}`;
+    }
+
+    const analysis = await callGroq([
+      { role: 'system', content: systemPrompt },
+      { role: 'user',   content: userContent }
+    ], 2000, 0.4, true);
+
+    labCurrentEntry.analysis = analysis;
+    renderLabAnalysis(analysis);
+
+    document.getElementById('lab-analyzing-badge').style.display = 'none';
+    document.getElementById('lab-progress').style.display = 'none';
+    document.getElementById('lab-save-btn').style.display = '';
+    btn.disabled = false; btn.textContent = '✦ Review & Advise';
+
+  } catch(err) {
+    document.getElementById('lab-analyzing-badge').style.display = 'none';
+    document.getElementById('lab-progress').style.display = 'none';
+    document.getElementById('lab-analysis-body').innerHTML = `<div style="color:var(--red);padding:16px;">⚠ Error: ${esc(err.message)}. Check your API key.</div>`;
+    btn.disabled = false; btn.textContent = '✦ Review & Advise';
+  }
+}
+
+function renderLabAnalysis(text) {
+  const sections = text.split(/^## /m).filter(Boolean);
+  let html = '';
+  for (const sec of sections) {
+    const lines = sec.trim().split('\n');
+    const title = lines[0].trim();
+    const body  = lines.slice(1).join('\n').trim();
+    html += `<div class="lab-section"><h4>${esc(title)}</h4>`;
+    if (title.includes('Key Values')) {
+      body.split('\n').filter(l=>l.trim()).forEach(line => {
+        const hi = line.match(/^\[HIGH\](.*)/i);
+        const lo = line.match(/^\[LOW\](.*)/i);
+        const no = line.match(/^\[NORMAL\](.*)/i);
+        if (hi) html += `<div class="lab-flag high"><div class="lab-flag-dot high"></div><div>${esc(hi[1].trim())}</div></div>`;
+        else if (lo) html += `<div class="lab-flag low"><div class="lab-flag-dot low"></div><div>${esc(lo[1].trim())}</div></div>`;
+        else if (no) html += `<div class="lab-flag normal"><div class="lab-flag-dot normal"></div><div>${esc(no[1].trim())}</div></div>`;
+        else if (line.trim()) html += `<p>${esc(line.trim())}</p>`;
+      });
+    } else {
+      body.split('\n').filter(l=>l.trim()).forEach(line => {
+        const clean = line.replace(/^[-•*]\s*/,'').trim();
+        if (clean) html += `<p style="margin-bottom:6px;">• ${esc(clean)}</p>`;
+      });
+    }
+    html += '</div>';
+  }
+  document.getElementById('lab-analysis-body').innerHTML = html || `<pre style="white-space:pre-wrap;color:var(--text-dim);">${esc(text)}</pre>`;
+}
+
+function saveLabAnalysis() {
+  if (!labCurrentEntry || !labCurrentEntry.analysis) { showToast('No analysis to save.'); return; }
+  if (!VAULT.medicalLabVault) VAULT.medicalLabVault = [];
+  VAULT.medicalLabVault.unshift({ id: Date.now(), name: labCurrentEntry.name, date: labCurrentEntry.date, analysis: labCurrentEntry.analysis });
+  saveToLocal();
+  renderMedLabList();
+  const btn = document.getElementById('lab-save-btn');
+  btn.textContent = '✓ Saved'; btn.disabled = true;
+  showToast('✓ Lab report saved to vault.');
+}
+
+function renderMedLabList() {
+  if (!VAULT.medicalLabVault) VAULT.medicalLabVault = [];
+  const vault = VAULT.medicalLabVault;
+  const countEl = document.getElementById('lab-vault-count');
+  const listEl  = document.getElementById('lab-vault-list');
+  if (!countEl || !listEl) return;
+  countEl.textContent = vault.length + ' saved';
+  if (!vault.length) {
+    listEl.innerHTML = '<div class="lab-empty">No reports saved yet.<br>Upload, review, and save to build your history.</div>';
+    return;
+  }
+  listEl.innerHTML = vault.map(entry => `
+    <div class="lab-item" id="lab-item-${entry.id}" onclick="loadSavedLabEntry(${entry.id})">
+      <div class="lab-item-icon">🔬</div>
+      <div class="lab-item-info">
+        <div class="lab-item-name">${esc(entry.name)}</div>
+        <div class="lab-item-meta">${esc(entry.date)}</div>
+      </div>
+      <button class="lab-item-del" onclick="event.stopPropagation();deleteMedLab(${entry.id})" title="Delete">✕</button>
+    </div>`).join('');
+}
+
+function loadSavedLabEntry(id) {
+  const entry = (VAULT.medicalLabVault||[]).find(e=>e.id===id);
+  if (!entry) return;
+  document.querySelectorAll('.lab-item').forEach(el=>el.classList.remove('active'));
+  const el = document.getElementById('lab-item-'+id); if (el) el.classList.add('active');
+  labCurrentEntry = entry;
+  document.getElementById('lab-analysis-wrap').style.display = 'block';
+  document.getElementById('lab-analysis-title').textContent = entry.name;
+  document.getElementById('lab-analyzing-badge').style.display = 'none';
+  document.getElementById('lab-progress').style.display = 'none';
+  document.getElementById('lab-save-btn').style.display = 'none';
+  renderLabAnalysis(entry.analysis);
+}
+
+function deleteMedLab(id) {
+  if (!confirm('Delete this report from your vault?')) return;
+  VAULT.medicalLabVault = (VAULT.medicalLabVault||[]).filter(e=>e.id!==id);
+  saveToLocal();
+  renderMedLabList();
+  showToast('✓ Report removed from vault.');
+}
+
+function exportMedLabs() {
+  const vault = VAULT.medicalLabVault || [];
+  if (!vault.length) { showToast('No lab reports to export.'); return; }
+  const payload = { _lazzaroMedLabs: true, version: 1, exported: new Date().toISOString(), labs: vault };
+  download(JSON.stringify(payload, null, 2), `MedLabVault_${ts()}.json`, 'application/json');
+  showToast('✓ Lab vault exported.');
+}
+
+function importMedLabs(e) {
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    try {
+      const parsed = JSON.parse(ev.target.result);
+      const incoming = parsed.labs || (Array.isArray(parsed) ? parsed : null);
+      if (!incoming) throw new Error('Not a valid Med Lab export file.');
+      if (!VAULT.medicalLabVault) VAULT.medicalLabVault = [];
+      const existing = new Set(VAULT.medicalLabVault.map(e=>e.id));
+      let added = 0;
+      incoming.forEach(entry => { if (!existing.has(entry.id)) { VAULT.medicalLabVault.push(entry); added++; } });
+      VAULT.medicalLabVault.sort((a,b)=>b.id-a.id);
+      saveToLocal();
+      renderMedLabList();
+      showToast(`✓ Imported ${added} new report(s) into vault.`);
+    } catch(err) { showToast('Import error: ' + err.message); }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+}
+
+// ── FILE UTILITIES ──
+function readAsBase64(file) {
+  return new Promise((res,rej) => {
+    const r = new FileReader();
+    r.onload  = () => res(r.result.split(',')[1]);
+    r.onerror = () => rej(new Error('File read failed'));
+    r.readAsDataURL(file);
+  });
+}
+function readAsText(file) {
+  return new Promise((res,rej) => {
+    const r = new FileReader();
+    r.onload  = () => res(r.result);
+    r.onerror = () => rej(new Error('File read failed'));
+    r.readAsText(file);
+  });
+}
+
 // ════════════════════════════════════════════════════════
 // HELPERS
 // ════════════════════════════════════════════════════════
@@ -1864,6 +2512,7 @@ function loadFromLocal() {
     // Ensure all required arrays exist for older saved versions
     if (!VAULT.mediatorHistory) VAULT.mediatorHistory = [];
     if (!VAULT.tabs)            VAULT.tabs = deepClone(BLANK_VAULT.tabs);
+    if (!VAULT.medicalLabVault) VAULT.medicalLabVault = [];
     return true;
   } catch(e) {
     return false;
@@ -1896,6 +2545,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderAll();
   initChat();
   clearChat();
+  initMedicalTab();
 
   if (restored) {
     updateStorageIndicator(true);
@@ -1905,7 +2555,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Modal backdrop close
-  ['addSessionModal','keyModal','modelModal','vaultModal'].forEach(id => {
+  ['addSessionModal','keyModal','modelModal','vaultModal','labReviewModal'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', function(e) { if(e.target===this) this.classList.remove('open'); });
   });
