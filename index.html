@@ -1499,11 +1499,20 @@ function loadVaultFromFile(event) {
       const parsed = JSON.parse(e.target.result);
       if (!parsed._lazzaroVault || !parsed.vault) throw new Error('Not a valid Wellness Vault file. Make sure you exported with "Export Vault (JSON)".');
       VAULT = parsed.vault;
-      // Ensure sessions array exists for older vault versions
-      if (!VAULT.sessions) VAULT.sessions = [];
-      if (!VAULT.mediatorHistory) VAULT.mediatorHistory = [];
-      if (!VAULT.tabs) VAULT.tabs = deepClone(BLANK_VAULT.tabs);
-      if (!VAULT.medicalLabVault) VAULT.medicalLabVault = [];
+      // Compatibility: ensure all required arrays exist
+      if (!VAULT.sessions)         VAULT.sessions = [];
+      if (!VAULT.mediatorHistory)  VAULT.mediatorHistory = [];
+      if (!VAULT.medicalLabVault)  VAULT.medicalLabVault = [];
+      // Tab merge: ensure every tab in BLANK_VAULT is present,
+      // preserving any custom labels the user has set on existing tabs.
+      if (!VAULT.tabs) {
+        VAULT.tabs = deepClone(BLANK_VAULT.tabs);
+      } else {
+        const existingIds = new Set(VAULT.tabs.map(t => t.id));
+        BLANK_VAULT.tabs.forEach(bt => {
+          if (!existingIds.has(bt.id)) VAULT.tabs.push(deepClone(bt));
+        });
+      }
       saveToLocal();
       renderAll();
       showToast('✓ Vault loaded. All tabs updated.');
