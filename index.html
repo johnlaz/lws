@@ -2,31 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wellness Strategy Suite</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0c0f14;--surface:#131820;--surface2:#1a2232;--border:#1e2d42;--gold:#c9a227;--gold-light:#e8c060;--teal:#2dd4bf;--red:#ef4444;--amber:#f59e0b;--green:#10b981;--blue:#3b82f6;--purple:#8b5cf6;--text:#e2e8f0;--text-muted:#64748b;--text-dim:#94a3b8;--font-display:'Playfair Display',Georgia,serif;--font-body:'DM Sans',system-ui,sans-serif;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;-webkit-tap-highlight-color:transparent;touch-action:manipulation;overscroll-behavior:none;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;}
 
 /* ── HEADER ── */
-.app-header{background:linear-gradient(135deg,#0c0f14,#131a26);border-bottom:1px solid var(--border);padding:0 1rem;display:flex;align-items:center;justify-content:space-between;min-height:56px;position:sticky;top:0;z-index:200;flex-wrap:nowrap;gap:8px;}
+.app-header{background:linear-gradient(135deg,#0c0f14,#131a26);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:200;}
 .logo{display:flex;align-items:center;gap:12px;}
 .logo-mark{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;font-size:18px;color:#0c0f14;}
-.logo-text{font-family:var(--font-display);font-size:15px;color:var(--text);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;}
-.logo-sub{font-size:10px;color:var(--text-muted);letter-spacing:.8px;text-transform:uppercase;display:block;margin-top:-2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px;}
+.logo-text{font-family:var(--font-display);font-size:17px;color:var(--text);letter-spacing:.3px;}
+.logo-sub{font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;display:block;margin-top:-3px;}
 
 /* ── NAV ── */
-.nav-container{background:var(--surface);border-bottom:1px solid var(--border);padding:0 1rem;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-.nav-tab{padding:12px 14px;border:none;background:none;color:var(--text-muted);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;letter-spacing:.3px;}
+.nav-container{background:var(--surface);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none;}
+.nav-tab{padding:14px 20px;border:none;background:none;color:var(--text-muted);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;letter-spacing:.3px;}
 .nav-tab:hover{color:var(--text-dim);}
 .nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
 .nav-tab.tab-tool{color:var(--text-muted);}
 .nav-tab.tab-tool.active{color:var(--teal);border-bottom-color:var(--teal);}
 
 /* ── LAYOUT ── */
-.main{max-width:1400px;margin:0 auto;padding:1.25rem;}
+.main{max-width:1400px;margin:0 auto;padding:2rem;}
 .panel{display:none;}.panel.active{display:block;}
 
 /* ── EMPTY STATE ── */
@@ -36,7 +36,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .empty-state-sub{font-size:13px;line-height:1.7;max-width:400px;margin:0 auto 1.5rem;}
 
 /* ── TYPOGRAPHY ── */
-.section-title{font-family:var(--font-display);font-size:20px;color:var(--text);margin-bottom:6px;}
+.section-title{font-family:var(--font-display);font-size:22px;color:var(--text);margin-bottom:6px;}
 .section-sub{color:var(--text-muted);font-size:13px;margin-bottom:1.5rem;}
 
 /* ── GRIDS ── */
@@ -68,7 +68,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .quote-refresh:disabled{opacity:.4;cursor:not-allowed;}
 
 /* ── TABLES ── */
-.data-table{width:100%;border-collapse:collapse;font-size:12px;}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
 .data-table th{background:rgba(201,162,39,.08);color:var(--gold);padding:10px 14px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.6px;border-bottom:1px solid var(--border);}
 .data-table td{padding:11px 14px;border-bottom:1px solid rgba(30,45,66,.6);color:var(--text-dim);vertical-align:top;}
 .data-table tr:last-child td{border-bottom:none;}
@@ -103,7 +103,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .timeline-date{font-size:11px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px;}
 .timeline-head{font-weight:600;color:var(--text);margin-bottom:5px;}
 .timeline-body{font-size:13px;color:var(--text-dim);}
-.protocol-row{display:grid;grid-template-columns:140px 1fr 1fr;border-bottom:1px solid var(--border);}
+.protocol-row{display:grid;grid-template-columns:180px 1fr 1fr;border-bottom:1px solid var(--border);}
 .protocol-row:last-child{border-bottom:none;}
 .protocol-cell{padding:12px 16px;font-size:13px;color:var(--text-dim);}
 .protocol-cell:first-child{color:var(--text);font-weight:600;}
@@ -161,7 +161,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .settings-btn:hover,.settings-btn.active{color:var(--gold);border-color:rgba(201,162,39,.4);background:rgba(201,162,39,.07);}
 .settings-btn svg{transition:transform .4s ease;}
 .settings-btn.active svg{transform:rotate(60deg);}
-.settings-menu{position:fixed;top:56px;right:8px;width:min(300px,calc(100vw - 16px));background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:500;display:none;animation:menuDrop .18s ease;max-height:calc(100vh - 72px);overflow-y:auto;}
+.settings-menu{position:absolute;top:calc(100% + 10px);right:0;width:300px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:500;display:none;animation:menuDrop .18s ease;}
 .settings-menu.open{display:block;}
 @keyframes menuDrop{from{opacity:0;transform:translateY(-8px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
 .settings-menu-header{padding:14px 16px 10px;font-family:var(--font-display);font-size:14px;color:var(--text);border-bottom:1px solid var(--border);}
@@ -178,10 +178,10 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 /* ── MODALS ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;display:none;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;width:620px;max-height:90vh;overflow-y:auto;width:min(620px,calc(100vw - 24px));}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;width:620px;max-height:86vh;overflow-y:auto;max-width:95vw;}
 .modal h3{font-family:var(--font-display);font-size:19px;margin-bottom:6px;}
 .modal-sub{color:var(--text-muted);font-size:13px;margin-bottom:1.5rem;line-height:1.6;}
-.modal-sm{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;width:min(460px,calc(100vw - 24px));max-height:90vh;overflow-y:auto;}
+.modal-sm{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.75rem;width:460px;max-width:95vw;}
 .modal-sm h3{font-family:var(--font-display);font-size:18px;margin-bottom:6px;}
 .modal-sm .modal-sub{color:var(--text-muted);font-size:13px;margin-bottom:1.25rem;}
 .form-group{margin-bottom:1rem;}
@@ -315,13 +315,13 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .med-tab-hero-icon{font-size:2.8rem;flex-shrink:0;}
 .med-tab-hero-title{font-family:var(--font-display);font-size:22px;color:var(--text);margin-bottom:4px;}
 .med-tab-hero-sub{color:var(--text-muted);font-size:13px;line-height:1.7;max-width:600px;}
-.med-sub-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.5rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-.med-sub-tab{padding:10px 14px;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);font-family:var(--font-body);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.med-sub-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:1.75rem;}
+.med-sub-tab{padding:11px 20px;background:none;border:none;border-bottom:2px solid transparent;color:var(--text-muted);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;}
 .med-sub-tab:hover{color:var(--text-dim);}
 .med-sub-tab.active{color:var(--green);border-bottom-color:var(--green);}
 .med-sub-panel{display:none;}.med-sub-panel.active{display:block;}
-.sym-layout{display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start;}
-.sym-chat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;height:min(560px,65vh);}
+.sym-layout{display:grid;grid-template-columns:1fr 360px;gap:1.5rem;align-items:start;}
+.sym-chat-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;height:560px;}
 .sym-chat-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
 .sym-pulse{width:8px;height:8px;border-radius:50%;background:var(--green);animation:symPulse 2s ease-in-out infinite;flex-shrink:0;}
 @keyframes symPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.3);}}
@@ -369,7 +369,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 .adv-urgency-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
 .adv-urgency span{font-size:12.5px;color:var(--text-dim);}
 .med-disclaimer{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--red);line-height:1.6;margin-top:4px;}
-.lab-layout{display:grid;grid-template-columns:1fr 280px;gap:1.5rem;align-items:start;}
+.lab-layout{display:grid;grid-template-columns:1fr 300px;gap:1.5rem;align-items:start;}
 .lab-upload-zone{background:var(--surface);border:2px dashed var(--border);border-radius:12px;padding:2.5rem 2rem;text-align:center;cursor:pointer;transition:all .2s;}
 .lab-upload-zone:hover,.lab-upload-zone.dragover{border-color:var(--teal);background:rgba(45,212,191,.04);}
 .lab-upload-zone h3{font-size:15px;font-weight:600;color:var(--text);margin-bottom:6px;font-family:var(--font-display);}
@@ -410,118 +410,24 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 @keyframes labLoad{0%{transform:translateX(-100%);}100%{transform:translateX(200%);}}
 
 /* ── RESPONSIVE ── */
-/* ─────────────────────────────────────
-   RESPONSIVE — TABLET (≤900px)
-───────────────────────────────────── */
-@media(max-width:900px){
-  .grid-3,.grid-4{ grid-template-columns:1fr 1fr; }
-  .option-pros-cons{ grid-template-columns:1fr; }
-  .sym-layout{ grid-template-columns:1fr; }
-  .lab-layout{ grid-template-columns:1fr; }
-  .sym-chat-box{ height:min(420px,55vh); }
-}
-
-/* ─────────────────────────────────────
-   RESPONSIVE — MOBILE (≤640px)
-───────────────────────────────────── */
-@media(max-width:640px){
-  /* Layout */
-  .main{ padding:.875rem; }
-  .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr; }
-  .prob-sol{ grid-template-columns:1fr; }
-  .option-pros-cons{ grid-template-columns:1fr; }
-
-  /* Header */
-  .app-header{ padding:0 .875rem; min-height:52px; }
-  .logo-sub{ display:none; }
-  .logo-text{ font-size:14px; max-width:130px; }
-  #storage-indicator{ display:none; }
-
-  /* Nav */
-  .nav-container{ padding:0 .5rem; }
-  .nav-tab{ padding:11px 10px; font-size:12px; }
-
-  /* Sections */
-  .section-title{ font-size:17px; }
-  .section-sub{ font-size:12px; }
-
-  /* Cards */
-  .card{ padding:1rem; }
-  .stat-card{ padding:1rem; }
-  .stat-value{ font-size:22px; }
-  .profile-card{ padding:1rem; }
-
-  /* Tables — make them scroll horizontally */
-  .data-table{ font-size:11px; }
-  .data-table th,.data-table td{ padding:8px 10px; }
-  .card>.data-table,.card table{ display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-
-  /* Protocol rows — stack vertically */
-  .protocol-row{ grid-template-columns:1fr; }
-  .protocol-header{ display:none; }
-  .protocol-cell{ padding:6px 12px; }
-  .protocol-cell:first-child{ background:rgba(201,162,39,.06); color:var(--gold); font-size:11px; text-transform:uppercase; letter-spacing:.5px; padding-top:10px; }
-
-  /* Option cards */
-  .option-card{ padding:1rem; }
-  .option-pros-cons{ grid-template-columns:1fr; }
-
-  /* Modals */
-  .modal-overlay{ align-items:flex-end; }
-  .modal{ border-radius:16px 16px 0 0; max-height:92vh; padding:1.25rem; border-bottom:none; }
-  .modal-sm{ border-radius:16px 16px 0 0; max-height:85vh; padding:1.25rem; border-bottom:none; }
-
-  /* Settings menu */
-  .settings-menu{ right:4px; width:calc(100vw - 8px); top:52px; }
-
-  /* Medical tab */
-  .med-tab-hero{ padding:1rem; flex-direction:column; gap:.75rem; text-align:center; }
-  .med-tab-hero-icon{ font-size:2rem; }
-  .med-tab-hero-title{ font-size:17px; }
-  .med-tab-hero-sub{ font-size:12px; max-width:100%; }
-  .med-sub-tab{ padding:9px 11px; font-size:11px; }
-  .sym-layout{ grid-template-columns:1fr; }
-  .lab-layout{ grid-template-columns:1fr; }
-  .sym-chat-box{ height:min(360px,50vh); }
-  .med-upload-grid{ grid-template-columns:1fr; }
-  .med-vs{ display:none; }
-  .med-context-row{ grid-template-columns:1fr; }
-  .med-perspectives-grid{ grid-template-columns:1fr; }
-  .med-options-row{ gap:6px; }
-  .med-mode-btn{ padding:6px 10px; font-size:11px; }
-  .symhist-grid{ grid-template-columns:1fr; }
-
-  /* Mediator */
-  .med-upload-grid{ grid-template-columns:1fr; }
-  .med-vs{ display:none; }
-
-  /* Session logs */
-  .session-head{ flex-wrap:wrap; gap:6px; }
-  .session-meta{ flex-wrap:wrap; }
-
-  /* Chat */
-  #chat-window{ height:min(360px,50vh); }
-
-  /* Timeline */
-  .timeline{ padding-left:18px; }
-
-  /* Tab bar (sub-tabs) */
-  .tab-bar-btn{ padding:9px 12px; font-size:12px; }
-  .tab-bar{ overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
-}
-
-/* ─────────────────────────────────────
-   RESPONSIVE — SMALL PHONES (≤380px)
-───────────────────────────────────── */
-@media(max-width:380px){
-  .main{ padding:.625rem; }
-  .nav-tab{ padding:10px 8px; font-size:11px; }
-  .logo-text{ max-width:110px; font-size:13px; }
-  .med-sub-tab{ padding:8px 8px; font-size:10px; }
-  .section-title{ font-size:15px; }
-  .btn{ padding:7px 12px; font-size:12px; }
-  .btn-sm{ padding:4px 9px; font-size:11px; }
-}
+.symhist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+.symhist-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s;}
+.symhist-card:hover{border-color:rgba(16,185,129,.35);}
+.symhist-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.symhist-title{font-size:14px;font-weight:600;color:var(--text);line-height:1.3;margin-bottom:3px;}
+.symhist-date{font-size:11px;color:var(--text-muted);}
+.symhist-urgency{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:600;}
+.symhist-body{padding:12px 16px;display:flex;flex-direction:column;gap:8px;}
+.symhist-sl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px;}
+.symhist-st{font-size:12.5px;color:var(--text-dim);line-height:1.65;}
+.symhist-foot{padding:9px 16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.symhist-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.symhist-tag{padding:2px 8px;border-radius:99px;font-size:10px;background:rgba(45,212,191,.1);color:var(--teal);border:1px solid rgba(45,212,191,.2);}
+.symhist-del{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:15px;padding:2px 6px;border-radius:5px;transition:color .15s;}
+.symhist-del:hover{color:var(--red);}
+.ctx-active{background:rgba(45,212,191,.12) !important;color:var(--teal) !important;border-color:rgba(45,212,191,.35) !important;}
+@media(max-width:900px){.grid-3,.grid-4{grid-template-columns:1fr 1fr;}.option-pros-cons{grid-template-columns:1fr;}}
+@media(max-width:640px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}.main{padding:1rem;}.med-upload-grid{grid-template-columns:1fr;}.med-vs{display:none;}.med-perspectives-grid,.med-context-row{grid-template-columns:1fr;}.prob-sol{grid-template-columns:1fr;}}
 @media print{.app-header,.nav-container,.btn,.session-toggle,.modal-overlay,.settings-wrap{display:none!important;}body{background:white;color:#1a1a1a;}.panel{display:block!important;margin-bottom:3rem;}}
 </style>
 </head>
@@ -537,7 +443,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:12px;">
-    <div id="storage-indicator" style="font-size:11px;color:var(--text-muted);letter-spacing:.3px;white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis;">○ Not saved</div>
+    <div id="storage-indicator" style="font-size:11px;color:var(--text-muted);letter-spacing:.3px;white-space:nowrap;">○ Not saved</div>
     <div class="settings-wrap" id="settingsWrap">
       <button class="settings-btn" onclick="toggleSettingsMenu(event)" title="Settings">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -820,6 +726,10 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
           <option value="coach">🎯 Executive Coach</option>
           <option value="journal">📓 Reflective Journal</option>
         </select>
+        <button class="btn btn-ghost btn-sm" id="chat-ctx-btn" onclick="toggleChatContext()"
+          style="gap:6px;font-size:12px;">
+          <span id="chat-ctx-icon">🔲</span><span id="chat-ctx-label">Fresh Perspective</span>
+        </button>
         <button class="btn btn-ghost btn-sm" onclick="clearChat()">↺ New Session</button>
         <button class="btn btn-teal btn-sm" id="chat-log-btn" onclick="logChatSession()" style="display:none;">↓ Log This Session</button>
       </div>
@@ -861,6 +771,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
     <div class="med-sub-tabs">
       <button class="med-sub-tab active" onclick="switchMedSubTab('med-symptom',this)">🩺 Symptom Checker</button>
       <button class="med-sub-tab" onclick="switchMedSubTab('med-labs',this)">🔬 Lab Diagnosis</button>
+      <button class="med-sub-tab" id="sym-history-tab-btn" onclick="switchMedSubTab('sym-history',this)">📋 Symptom History <span id="symhist-badge" style="display:none;background:rgba(45,212,191,.15);color:var(--teal);font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px;margin-left:5px;">0</span></button>
     </div>
 
     <!-- ── SYMPTOM CHECKER ── -->
@@ -985,6 +896,19 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 
       </div><!-- end lab-layout -->
     </div><!-- end med-labs -->
+
+    <!-- SYMPTOM HISTORY PANEL -->
+    <div id="sym-history" class="med-sub-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:10px;">
+        <div><div class="section-title" style="font-size:17px;margin-bottom:2px;">Symptom History</div><div class="section-sub" style="margin-bottom:0;">Saved symptom cards from past consultations</div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <input type="text" id="symhist-search" class="form-input" placeholder="Search…" style="width:180px;padding:8px 12px;font-size:12px;" oninput="filterSymHistory()">
+          <button class="btn btn-ghost btn-sm" onclick="exportSymHistory()">↓ Export</button>
+        </div>
+      </div>
+      <div class="grid-4" id="symhist-stats" style="margin-bottom:1.25rem;"></div>
+      <div class="symhist-grid" id="symhist-grid"></div>
+    </div><!-- end sym-history -->
 
   </div><!-- end panel-medical -->
 
@@ -1150,7 +1074,8 @@ const BLANK_VAULT = {
   },
   sessions: [],
   mediatorHistory: [],
-  medicalLabVault: []
+  medicalLabVault: [],
+  symptomVault: []
 };
 
 // ════════════════════════════════════════════════════════
@@ -1206,6 +1131,7 @@ function renderAll() {
   renderSessions();
   renderMediatorHistory();
   renderMedLabList();
+  renderSymHistory();
 }
 
 // ── AUDIT ──
@@ -1774,8 +1700,9 @@ function saveKey() {
   const v = document.getElementById('newKeyInput').value.trim();
   if (!v) { showToast('Enter a key.'); return; }
   GROQ_KEY = v;
+  try { localStorage.setItem(LS_KEY + '_key', v); } catch(e) {}
   document.getElementById('key-status-label').textContent = v.slice(0,8)+'…'+v.slice(-4);
-  closeKeyModal(); showToast('✓ API key saved.');
+  closeKeyModal(); showToast('✓ API key saved — persists across sessions.');
 }
 
 function openModelModal() {
@@ -1967,6 +1894,47 @@ function exportHTML() {
 // ════════════════════════════════════════════════════════
 // GROQ API
 // ════════════════════════════════════════════════════════
+// AI CHAT — CONTEXT TOGGLE
+// ════════════════════════════════════════════════════════
+let chatContextEnabled = false;
+
+function toggleChatContext() {
+  chatContextEnabled = !chatContextEnabled;
+  const btn   = document.getElementById('chat-ctx-btn');
+  const icon  = document.getElementById('chat-ctx-icon');
+  const label = document.getElementById('chat-ctx-label');
+  if (!btn) return;
+  if (chatContextEnabled) {
+    btn.classList.add('ctx-active');
+    icon.textContent  = '✅';
+    label.textContent = 'Session Memory ON';
+    btn.title = 'AI reads your past session notes. Click to switch to Fresh Perspective.';
+    showToast('Session Memory enabled — AI will reference your past sessions.', 3000);
+  } else {
+    btn.classList.remove('ctx-active');
+    icon.textContent  = '🔲';
+    label.textContent = 'Fresh Perspective';
+    btn.title = 'AI starts clean. Click to enable Session Memory.';
+    showToast('Fresh Perspective — AI starts with no prior knowledge.', 2500);
+  }
+}
+
+function buildSessionContext() {
+  const sessions = (VAULT.sessions || []).slice(-8);
+  if (!sessions.length) return '';
+  const lines = sessions.map(s => {
+    const parts = [];
+    if (s.date)     parts.push(s.date);
+    if (s.category) parts.push('[' + s.category + ']');
+    if (s.title)    parts.push(s.title);
+    if (s.insight)  parts.push('Key insight: ' + s.insight);
+    else if (s.problem) parts.push('Challenge: ' + s.problem.slice(0, 120));
+    return parts.join(' - ');
+  }).join(' | ');
+  return '\n\n[PRIOR SESSION CONTEXT: ' + lines + ']';
+}
+
+// ════════════════════════════════════════════════════════
 // AI CHAT
 // ════════════════════════════════════════════════════════
 let chatHistory = [];   // { role, content } — full conversation for Groq
@@ -2068,9 +2036,10 @@ async function sendChatMessage() {
   document.getElementById('chat-send-btn').disabled = true;
   document.getElementById('chat-status').textContent = 'Thinking…';
 
-  // Build messages for Groq: system prompt + history
+  // Build messages for Groq: system prompt + optional session context + history
   const persona = CHAT_PERSONAS[currentPersona()];
-  const systemMsg = { role: 'system', content: persona.system };
+  const contextBlock = chatContextEnabled ? buildSessionContext() : '';
+  const systemMsg = { role: 'system', content: persona.system + contextBlock };
   const messages  = [systemMsg, ...chatHistory];
 
   try {
@@ -2166,6 +2135,144 @@ async function logChatSession() {
 
   logBtn.textContent = '↓ Log This Session';
   logBtn.disabled = false;
+}
+
+// ════════════════════════════════════════════════════════
+// SYMPTOM HISTORY
+// ════════════════════════════════════════════════════════
+
+function saveSymptomCard() {
+  const adv = window._currentAdvice;
+  if (!adv) { showToast('No advice card generated yet.'); return; }
+  if (!VAULT.symptomVault) VAULT.symptomVault = [];
+
+  const card = {
+    id:        Date.now(),
+    date:      new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }),
+    condition: adv.condition  || 'Unknown',
+    urgency:   adv.urgency    || 'routine',
+    confidence:adv.confidence || '',
+    summary:   adv.summary    || '',
+    remedies:  adv.home_remedies  || [],
+    otc:       adv.otc_options    || [],
+    seeDoctor: adv.see_doctor_if  || [],
+    tags:      buildSymTags(adv)
+  };
+
+  // Prevent accidental duplicate within 5 minutes
+  const dupe = VAULT.symptomVault.find(s => s.condition === card.condition && (card.id - s.id) < 300000);
+  if (dupe) { showToast('This card was already saved recently.'); return; }
+
+  VAULT.symptomVault.unshift(card);
+  saveToLocal();
+  renderSymHistory();
+  updateSymBadge();
+  showToast('✓ Symptom card saved to history.');
+
+  // Button feedback
+  const btn = document.getElementById('sym-save-btn');
+  if (btn) {
+    btn.textContent = '✓ Saved!';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = '📋 Save to History'; btn.disabled = false; }, 2500);
+  }
+}
+
+function buildSymTags(adv) {
+  const tags = [];
+  if (adv.urgency && adv.urgency !== 'routine') tags.push(adv.urgency);
+  const words = (adv.condition || '').split(' ').slice(0, 2)
+    .map(w => w.toLowerCase().replace(/[^a-z]/g, '')).filter(w => w.length > 2);
+  tags.push(...words);
+  return [...new Set(tags)].slice(0, 4);
+}
+
+function updateSymBadge() {
+  const count = (VAULT.symptomVault || []).length;
+  const badge = document.getElementById('symhist-badge');
+  if (!badge) return;
+  badge.textContent = count;
+  badge.style.display = count ? 'inline' : 'none';
+}
+
+function renderSymHistory() {
+  if (!VAULT.symptomVault) VAULT.symptomVault = [];
+  const cards = VAULT.symptomVault;
+  const grid  = document.getElementById('symhist-grid');
+  const stats = document.getElementById('symhist-stats');
+  updateSymBadge();
+  if (!grid) return;
+
+  if (stats) {
+    const uc = { urgent:0, emergency:0, soon:0, routine:0 };
+    cards.forEach(c => { if (c.urgency in uc) uc[c.urgency]++; });
+    const highCount  = uc.urgent + uc.emergency + uc.soon;
+    const conditions = new Set(cards.map(c => c.condition)).size;
+    stats.innerHTML = [
+      { label:'Total Saved',  value:cards.length,   color:'var(--gold)',  desc:'symptom cards' },
+      { label:'Conditions',   value:conditions,       color:'var(--teal)',  desc:'unique' },
+      { label:'Needs Attn',   value:highCount,        color:'var(--red)',   desc:'urgent/soon' },
+      { label:'Manageable',   value:uc.routine,       color:'var(--green)', desc:'routine' }
+    ].map(s => '<div class="stat-card"><div class="stat-label">' + s.label + '</div>'
+      + '<div class="stat-value" style="color:' + s.color + ';">' + s.value + '</div>'
+      + '<div class="stat-desc">' + s.desc + '</div></div>').join('');
+  }
+
+  if (!cards.length) {
+    grid.innerHTML = '<div class="empty-state" style="padding:3rem;grid-column:1/-1;">'
+      + '<div class="empty-state-icon">📋</div>'
+      + '<div class="empty-state-title">No saved symptom cards yet</div>'
+      + '<div class="empty-state-sub">Use the Symptom Checker and click "Save to History" when advice cards appear.</div></div>';
+    return;
+  }
+
+  const uc = { urgent:'var(--red)', emergency:'var(--red)', soon:'var(--amber)', routine:'var(--green)' };
+  const ul = { urgent:'🔴 Seek Care', emergency:'🚨 Emergency', soon:'🟡 See Doctor Soon', routine:'🟢 Manageable' };
+
+  grid.innerHTML = cards.map(c => {
+    const col = uc[c.urgency] || 'var(--text-muted)';
+    const lbl = ul[c.urgency] || esc(c.urgency || '');
+    return '<div class="symhist-card" id="symc-' + c.id + '">'
+      + '<div class="symhist-head"><div>'
+      + '<div class="symhist-title">' + esc(c.condition) + '</div>'
+      + '<div class="symhist-date">📅 ' + esc(c.date) + '</div></div>'
+      + '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">'
+      + '<span class="symhist-urgency" style="background:' + col + '22;color:' + col + ';border:1px solid ' + col + '44;">' + lbl + '</span>'
+      + (c.confidence ? '<span class="badge badge-info" style="font-size:10px;">' + esc(c.confidence) + ' confidence</span>' : '')
+      + '</div></div>'
+      + '<div class="symhist-body">'
+      + (c.summary ? '<div><div class="symhist-sl" style="color:var(--blue);">Summary</div><div class="symhist-st">' + esc(c.summary) + '</div></div>' : '')
+      + (c.remedies && c.remedies.length ? '<div><div class="symhist-sl" style="color:var(--green);">🌿 Home Remedies</div><div class="symhist-st">' + c.remedies.map(r => '• ' + esc(r)).join('<br>') + '</div></div>' : '')
+      + (c.otc && c.otc.length ? '<div><div class="symhist-sl" style="color:var(--amber);">💊 OTC Options</div><div class="symhist-st">' + c.otc.map(o => '• ' + esc(o)).join('<br>') + '</div></div>' : '')
+      + (c.seeDoctor && c.seeDoctor.length ? '<div><div class="symhist-sl" style="color:var(--red);">🏥 See Doctor If…</div><div class="symhist-st">' + c.seeDoctor.map(s => '• ' + esc(s)).join('<br>') + '</div></div>' : '')
+      + '</div>'
+      + '<div class="symhist-foot">'
+      + '<div class="symhist-tags">' + (c.tags || []).map(t => '<span class="symhist-tag">' + esc(t) + '</span>').join('') + '</div>'
+      + '<button class="symhist-del" onclick="deleteSymCard(' + c.id + ')" title="Delete">🗑</button>'
+      + '</div></div>';
+  }).join('');
+}
+
+function deleteSymCard(id) {
+  if (!confirm('Remove this symptom card?')) return;
+  VAULT.symptomVault = (VAULT.symptomVault || []).filter(c => c.id !== id);
+  saveToLocal();
+  renderSymHistory();
+  showToast('✓ Card deleted.');
+}
+
+function filterSymHistory() {
+  const q = (document.getElementById('symhist-search') ? document.getElementById('symhist-search').value : '').toLowerCase();
+  document.querySelectorAll('.symhist-card').forEach(c => {
+    c.style.display = (!q || c.textContent.toLowerCase().includes(q)) ? '' : 'none';
+  });
+}
+
+function exportSymHistory() {
+  if (!(VAULT.symptomVault || []).length) { showToast('No symptom cards to export.'); return; }
+  download(JSON.stringify({ exported:new Date().toISOString(), symptomHistory:VAULT.symptomVault }, null, 2),
+    'SymptomHistory_' + ts() + '.json', 'application/json');
+  showToast('✓ ' + VAULT.symptomVault.length + ' cards exported.');
 }
 
 // ════════════════════════════════════════════════════════
@@ -2352,8 +2459,12 @@ function renderAdviceCards(advice) {
       </div>
     </div>` : ''}
 
-    <div class="med-disclaimer">⚠️ AI-generated guidance only — not a medical diagnosis. Always consult a licensed healthcare professional.</div>
+    <div style="padding:10px 15px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+      <span class="med-disclaimer" style="margin:0;">⚠️ AI-generated guidance only. Always consult a licensed professional.</span>
+      <button class="btn btn-teal btn-sm" id="sym-save-btn" onclick="saveSymptomCard()" style="white-space:nowrap;flex-shrink:0;">📋 Save to History</button>
+    </div>
   `;
+  window._currentAdvice = advice;
 }
 
 // ════════════════════════════════
@@ -2604,25 +2715,33 @@ const LS_KEY = 'lazzaro_wellness_vault_v3';
 function saveToLocal() {
   try {
     localStorage.setItem(LS_KEY, JSON.stringify(VAULT));
+    // Persist API key and model separately so they survive page reloads
+    if (GROQ_KEY)   localStorage.setItem(LS_KEY + '_key',   GROQ_KEY);
+    if (GROQ_MODEL) localStorage.setItem(LS_KEY + '_model', GROQ_MODEL);
     updateStorageIndicator(true);
   } catch(e) {
-    // localStorage full or blocked — fail silently, user can still export vault
     console.warn('localStorage save failed:', e.message);
   }
 }
 
 function loadFromLocal() {
   try {
+    // Restore API key + model first (these are stored separately)
+    const savedKey   = localStorage.getItem(LS_KEY + '_key');
+    const savedModel = localStorage.getItem(LS_KEY + '_model');
+    if (savedKey)   { GROQ_KEY = savedKey; }
+    if (savedModel) { GROQ_MODEL = savedModel; selectedModel = savedModel; }
+
     const raw = localStorage.getItem(LS_KEY);
     if (!raw) return false;
     const parsed = JSON.parse(raw);
-    // Basic sanity check — must have at least meta and sessions
     if (!parsed || !parsed.meta || !Array.isArray(parsed.sessions)) return false;
     VAULT = parsed;
-    // Ensure all required arrays exist for older saved versions
+    // Ensure all required arrays exist for older vault versions
     if (!VAULT.mediatorHistory) VAULT.mediatorHistory = [];
     if (!VAULT.tabs)            VAULT.tabs = deepClone(BLANK_VAULT.tabs);
     if (!VAULT.medicalLabVault) VAULT.medicalLabVault = [];
+    if (!VAULT.symptomVault)    VAULT.symptomVault = [];
     return true;
   } catch(e) {
     return false;
@@ -2655,10 +2774,18 @@ document.addEventListener('DOMContentLoaded', function() {
   renderAll();
   initChat();
   clearChat();
+  renderSymHistory();
   initMedicalTab();
 
   if (restored) {
     updateStorageIndicator(true);
+    // Update UI labels if key/model were restored
+    if (GROQ_KEY) {
+      const masked = GROQ_KEY.slice(0,8) + '…' + GROQ_KEY.slice(-4);
+      document.getElementById('key-status-label').textContent = masked;
+    }
+    const m = MODELS.find(x => x.id === GROQ_MODEL);
+    if (m) document.getElementById('model-status-label').textContent = m.name;
     showToast('✓ Vault restored from local storage.', 2500);
   } else {
     updateStorageIndicator(false);
