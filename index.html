@@ -437,65 +437,44 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
 @media(max-width:640px){
   .main{padding:.875rem;}
   .grid-2,.grid-3,.grid-4{grid-template-columns:1fr;}
-  .prob-sol{grid-template-columns:1fr;}
-  .option-pros-cons{grid-template-columns:1fr;}
-  .med-perspectives-grid,.med-context-row{grid-template-columns:1fr;}
+  .prob-sol,.option-pros-cons,.med-perspectives-grid,.med-context-row{grid-template-columns:1fr;}
   .app-header{padding:0 .875rem;min-height:52px;}
-  .logo-sub{display:none;}
-  .logo-text{font-size:14px;}
+  .logo-sub{display:none;} .logo-text{font-size:14px;}
   #storage-indicator{display:none;}
   .logo-mark{width:32px;height:32px;font-size:16px;}
-  .nav-container{padding:0 .5rem;}
-  .nav-tab{padding:11px 10px;font-size:12px;}
+  .nav-container{padding:0 .5rem;} .nav-tab{padding:11px 10px;font-size:12px;}
   .settings-menu{position:fixed;top:52px;right:0;left:0;width:100%;border-radius:0 0 14px 14px;max-height:calc(100vh - 52px);}
   .modal-overlay{align-items:flex-end;}
   .modal{width:100%;border-radius:16px 16px 0 0;border-bottom:none;padding:1.25rem;max-height:90vh;}
   .modal-sm{width:100%;border-radius:16px 16px 0 0;border-bottom:none;padding:1.25rem;max-height:85vh;}
-  .section-title{font-size:17px;}
-  .section-sub{font-size:12px;}
-  .card{padding:1rem;}
-  .stat-card{padding:1rem;}
-  .stat-value{font-size:20px;}
-  .profile-card{padding:1rem;}
-  .profile-item{font-size:12px;}
-  .data-table{font-size:11.5px;}
-  .data-table th,.data-table td{padding:8px 10px;}
+  .section-title{font-size:17px;} .section-sub{font-size:12px;}
+  .card{padding:1rem;} .stat-card{padding:1rem;} .stat-value{font-size:20px;} .profile-card{padding:1rem;} .profile-item{font-size:12px;}
+  .data-table{font-size:11.5px;} .data-table th,.data-table td{padding:8px 10px;}
   .protocol-row{display:flex;flex-direction:column;border-bottom:1px solid var(--border);}
   .protocol-header{display:none;}
   .protocol-cell{padding:6px 12px;border-bottom:none;}
   .protocol-cell:first-child{background:rgba(201,162,39,.07);color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:.5px;padding-top:10px;}
   .option-card{padding:1rem;}
-  .session-head{flex-wrap:wrap;gap:6px;padding:12px 14px;}
-  .session-body{padding:1rem 14px;}
-  .tab-bar-btn{padding:9px 12px;font-size:12px;}
-  .med-sub-tab{padding:9px 10px;font-size:11px;}
+  .session-head{flex-wrap:wrap;gap:6px;padding:12px 14px;} .session-body{padding:1rem 14px;}
+  .tab-bar-btn{padding:9px 12px;font-size:12px;} .med-sub-tab{padding:9px 10px;font-size:11px;}
   .med-tab-hero{flex-direction:column;gap:.875rem;text-align:center;padding:1.25rem;margin-bottom:1.25rem;}
-  .sym-layout{grid-template-columns:1fr;}
-  .lab-layout{grid-template-columns:1fr;}
+  .sym-layout{grid-template-columns:1fr;} .lab-layout{grid-template-columns:1fr;}
   .sym-chat-box{height:min(340px,50vh);}
-  .med-upload-grid{grid-template-columns:1fr;}
-  .med-vs{display:none;}
-  .med-options-row{gap:6px;}
-  .med-mode-btn{padding:6px 10px;font-size:11px;}
+  .med-upload-grid{grid-template-columns:1fr;} .med-vs{display:none;}
+  .med-options-row{gap:6px;} .med-mode-btn{padding:6px 10px;font-size:11px;}
   .med-analyze-btn{padding:12px;font-size:14px;}
-  #chat-window{height:min(320px,46vh);}
-  #chat-input{min-height:50px;}
-  #chat-send-btn{height:50px;padding:0 14px;}
+  #chat-window{height:min(320px,46vh);} #chat-input{min-height:50px;} #chat-send-btn{height:50px;padding:0 14px;}
   .chat-bubble{max-width:90%;font-size:13px;}
   .symhist-grid{grid-template-columns:1fr;}
   .timeline{padding-left:18px;}
   .quote{font-size:14px;padding:1rem 2.5rem 1rem 1rem;}
-  #chat-ctx-btn span#chat-ctx-label{display:none;}
+  #chat-ctx-label{display:none;}
 }
 @media(max-width:380px){
-  .main{padding:.625rem;}
-  .nav-tab{padding:10px 8px;font-size:11px;}
-  .med-sub-tab{padding:8px 7px;font-size:10px;}
-  .section-title{font-size:15px;}
-  .btn{padding:7px 12px;font-size:12px;}
-  .btn-sm{padding:4px 9px;font-size:11px;}
-  .stat-value{font-size:18px;}
-  .card{padding:.875rem;}
+  .main{padding:.625rem;} .nav-tab{padding:10px 8px;font-size:11px;}
+  .med-sub-tab{padding:8px 7px;font-size:10px;} .section-title{font-size:15px;}
+  .btn{padding:7px 12px;font-size:12px;} .btn-sm{padding:4px 9px;font-size:11px;}
+  .stat-value{font-size:18px;} .card{padding:.875rem;}
 }
 @media print{.app-header,.nav-container,.btn,.session-toggle,.modal-overlay,.settings-wrap{display:none!important;}body{background:white;color:#1a1a1a;}.panel{display:block!important;margin-bottom:3rem;}}
 </style>
@@ -795,9 +774,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
           <option value="coach">🎯 Executive Coach</option>
           <option value="journal">📓 Reflective Journal</option>
         </select>
-        <button class="btn btn-ghost btn-sm" id="chat-ctx-btn" onclick="toggleChatContext()" style="gap:6px;font-size:12px;" title="Toggle session memory">
-          <span id="chat-ctx-icon">🔲</span><span id="chat-ctx-label"> Fresh Perspective</span>
-        </button>
+        <button class="btn btn-ghost btn-sm" id="chat-ctx-btn" onclick="toggleChatContext()" style="gap:6px;font-size:12px;" title="Toggle session memory"><span id="chat-ctx-icon">🔲</span><span id="chat-ctx-label"> Fresh Perspective</span></button>
         <button class="btn btn-ghost btn-sm" onclick="clearChat()">↺ New Session</button>
         <button class="btn btn-teal btn-sm" id="chat-log-btn" onclick="logChatSession()" style="display:none;">↓ Log This Session</button>
       </div>
@@ -965,22 +942,17 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-hei
       </div><!-- end lab-layout -->
     </div><!-- end med-labs -->
 
-    <!-- SYMPTOM HISTORY PANEL -->
     <div id="sym-history" class="med-sub-panel">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:10px;">
-        <div>
-          <div class="section-title" style="font-size:17px;margin-bottom:2px;">Symptom History</div>
-          <div class="section-sub" style="margin-bottom:0;">Saved cards from past consultations — your personal medical reference</div>
-        </div>
+        <div><div class="section-title" style="font-size:17px;margin-bottom:2px;">Symptom History</div><div class="section-sub" style="margin-bottom:0;">Saved cards from past consultations</div></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-          <input type="text" id="symhist-search" class="form-input" placeholder="Search…"
-            style="width:180px;padding:8px 12px;font-size:12px;" oninput="filterSymHistory()">
+          <input type="text" id="symhist-search" class="form-input" placeholder="Search…" style="width:180px;padding:8px 12px;font-size:12px;" oninput="filterSymHistory()">
           <button class="btn btn-ghost btn-sm" onclick="exportSymHistory()">↓ Export</button>
         </div>
       </div>
       <div class="grid-4" id="symhist-stats" style="margin-bottom:1.25rem;"></div>
       <div class="symhist-grid" id="symhist-grid"></div>
-    </div><!-- end sym-history -->
+    </div>
 
   </div><!-- end panel-medical -->
 
@@ -2213,138 +2185,76 @@ async function logChatSession() {
 // ════════════════════════════════════════════════════════
 // SYMPTOM HISTORY
 // ════════════════════════════════════════════════════════
-
 function saveSymptomCard() {
   const adv = window._currentAdvice;
   if (!adv) { showToast('No advice card generated yet.'); return; }
   if (!VAULT.symptomVault) VAULT.symptomVault = [];
-
   const card = {
-    id:        Date.now(),
-    date:      new Date().toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }),
-    condition: adv.condition  || 'Unknown',
-    urgency:   adv.urgency    || 'routine',
-    confidence:adv.confidence || '',
-    summary:   adv.summary    || '',
-    remedies:  adv.home_remedies  || [],
-    otc:       adv.otc_options    || [],
-    seeDoctor: adv.see_doctor_if  || [],
-    tags:      buildSymTags(adv)
+    id:Date.now(), date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}),
+    condition:adv.condition||'Unknown', urgency:adv.urgency||'routine',
+    confidence:adv.confidence||'', summary:adv.summary||'',
+    remedies:adv.home_remedies||[], otc:adv.otc_options||[],
+    seeDoctor:adv.see_doctor_if||[], tags:buildSymTags(adv)
   };
-
-  const dupe = VAULT.symptomVault.find(s => s.condition === card.condition && (card.id - s.id) < 300000);
-  if (dupe) { showToast('This card was already saved recently.'); return; }
-
+  const dupe = VAULT.symptomVault.find(s=>s.condition===card.condition&&(card.id-s.id)<300000);
+  if (dupe) { showToast('Already saved recently.'); return; }
   VAULT.symptomVault.unshift(card);
-  saveToLocal();
-  renderSymHistory();
-  updateSymBadge();
-  showToast('✓ Symptom card saved to history.');
-
-  const btn = document.getElementById('sym-save-btn');
-  if (btn) {
-    btn.textContent = '✓ Saved!';
-    btn.disabled = true;
-    setTimeout(() => { btn.textContent = '📋 Save to History'; btn.disabled = false; }, 2500);
-  }
+  saveToLocal(); renderSymHistory(); updateSymBadge();
+  showToast('✓ Symptom card saved.');
+  const btn=document.getElementById('sym-save-btn');
+  if(btn){btn.textContent='✓ Saved!';btn.disabled=true;setTimeout(()=>{btn.textContent='📋 Save to History';btn.disabled=false;},2500);}
 }
-
 function buildSymTags(adv) {
-  const tags = [];
-  if (adv.urgency && adv.urgency !== 'routine') tags.push(adv.urgency);
-  const words = (adv.condition || '').split(' ').slice(0, 2)
-    .map(w => w.toLowerCase().replace(/[^a-z]/g, '')).filter(w => w.length > 2);
+  const tags=[];
+  if(adv.urgency&&adv.urgency!=='routine')tags.push(adv.urgency);
+  const words=(adv.condition||'').split(' ').slice(0,2).map(w=>w.toLowerCase().replace(/[^a-z]/g,'')).filter(w=>w.length>2);
   tags.push(...words);
-  return [...new Set(tags)].slice(0, 4);
+  return [...new Set(tags)].slice(0,4);
 }
-
 function updateSymBadge() {
-  const count = (VAULT.symptomVault || []).length;
-  const badge = document.getElementById('symhist-badge');
-  if (!badge) return;
-  badge.textContent = count;
-  badge.style.display = count ? 'inline' : 'none';
+  const count=(VAULT.symptomVault||[]).length;
+  const badge=document.getElementById('symhist-badge');
+  if(!badge)return; badge.textContent=count; badge.style.display=count?'inline':'none';
 }
-
 function renderSymHistory() {
-  if (!VAULT.symptomVault) VAULT.symptomVault = [];
-  const cards = VAULT.symptomVault;
-  const grid  = document.getElementById('symhist-grid');
-  const stats = document.getElementById('symhist-stats');
-  updateSymBadge();
-  if (!grid) return;
-
-  if (stats) {
-    const uc = { urgent:0, emergency:0, soon:0, routine:0 };
-    cards.forEach(c => { if (c.urgency in uc) uc[c.urgency]++; });
-    const highCount = uc.urgent + uc.emergency + uc.soon;
-    const conditions = new Set(cards.map(c => c.condition)).size;
-    stats.innerHTML = [
-      { label:'Total Saved', value:cards.length,  color:'var(--gold)',  desc:'cards' },
-      { label:'Conditions',  value:conditions,      color:'var(--teal)',  desc:'unique' },
-      { label:'Needs Attn',  value:highCount,       color:'var(--red)',   desc:'urgent/soon' },
-      { label:'Manageable',  value:uc.routine,      color:'var(--green)', desc:'routine' }
-    ].map(s => '<div class="stat-card"><div class="stat-label">'+s.label+'</div>'
-      +'<div class="stat-value" style="color:'+s.color+'">'+s.value+'</div>'
-      +'<div class="stat-desc">'+s.desc+'</div></div>').join('');
+  if(!VAULT.symptomVault)VAULT.symptomVault=[];
+  const cards=VAULT.symptomVault;
+  const grid=document.getElementById('symhist-grid');
+  const stats=document.getElementById('symhist-stats');
+  updateSymBadge(); if(!grid)return;
+  if(stats){
+    const uc={urgent:0,emergency:0,soon:0,routine:0};
+    cards.forEach(c=>{if(c.urgency in uc)uc[c.urgency]++;});
+    const hi=uc.urgent+uc.emergency+uc.soon;
+    const conds=new Set(cards.map(c=>c.condition)).size;
+    stats.innerHTML=[{label:'Total',value:cards.length,color:'var(--gold)',desc:'cards'},
+      {label:'Conditions',value:conds,color:'var(--teal)',desc:'unique'},
+      {label:'Needs Attn',value:hi,color:'var(--red)',desc:'urgent/soon'},
+      {label:'Manageable',value:uc.routine,color:'var(--green)',desc:'routine'}
+    ].map(s=>'<div class="stat-card"><div class="stat-label">'+s.label+'</div><div class="stat-value" style="color:'+s.color+'">'+s.value+'</div><div class="stat-desc">'+s.desc+'</div></div>').join('');
   }
-
-  if (!cards.length) {
-    grid.innerHTML = '<div class="empty-state" style="padding:3rem;grid-column:1/-1;">'
-      +'<div class="empty-state-icon">📋</div>'
-      +'<div class="empty-state-title">No saved symptom cards yet</div>'
-      +'<div class="empty-state-sub">Run a Symptom Checker session and click “Save to History” on the advice card.</div></div>';
-    return;
-  }
-
-  const ucol = { urgent:'var(--red)', emergency:'var(--red)', soon:'var(--amber)', routine:'var(--green)' };
-  const ulbl = { urgent:'🔴 Seek Care', emergency:'🚨 Emergency', soon:'🟡 See Doctor Soon', routine:'🟢 Manageable' };
-
-  grid.innerHTML = cards.map(card => {
-    const col = ucol[card.urgency] || 'var(--text-muted)';
-    const lbl = ulbl[card.urgency] || esc(card.urgency || '');
+  if(!cards.length){grid.innerHTML='<div class="empty-state" style="padding:3rem;grid-column:1/-1;"><div class="empty-state-icon">📋</div><div class="empty-state-title">No saved symptom cards yet</div><div class="empty-state-sub">Run a Symptom Checker session and click Save to History.</div></div>';return;}
+  const ucol={urgent:'var(--red)',emergency:'var(--red)',soon:'var(--amber)',routine:'var(--green)'};
+  const ulbl={urgent:'🔴 Seek Care',emergency:'🚨 Emergency',soon:'🟡 See Doctor Soon',routine:'🟢 Manageable'};
+  grid.innerHTML=cards.map(card=>{
+    const col=ucol[card.urgency]||'var(--text-muted)';
+    const lbl=ulbl[card.urgency]||esc(card.urgency||'');
     return '<div class="symhist-card" id="symc-'+card.id+'">'
-      +'<div class="symhist-head"><div>'
-      +'<div class="symhist-title">'+esc(card.condition)+'</div>'
-      +'<div class="symhist-date">📅 '+esc(card.date)+'</div></div>'
-      +'<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">'
-      +'<span class="symhist-urgency" style="background:'+col+'22;color:'+col+';border:1px solid '+col+'44;">'+lbl+'</span>'
-      +(card.confidence ? '<span class="badge badge-info" style="font-size:10px;">'+esc(card.confidence)+' confidence</span>' : '')
-      +'</div></div>'
+      +'<div class="symhist-head"><div><div class="symhist-title">'+esc(card.condition)+'</div><div class="symhist-date">📅 '+esc(card.date)+'</div></div>'
+      +'<div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;"><span class="symhist-urgency" style="background:'+col+'22;color:'+col+';border:1px solid '+col+'44;">'+lbl+'</span>'
+      +(card.confidence?'<span class="badge badge-info" style="font-size:10px;">'+esc(card.confidence)+' confidence</span>':'')+'</div></div>'
       +'<div class="symhist-body">'
-      +(card.summary ? '<div><div class="symhist-sl" style="color:var(--blue);">Summary</div><div class="symhist-st">'+esc(card.summary)+'</div></div>' : '')
-      +(card.remedies&&card.remedies.length ? '<div><div class="symhist-sl" style="color:var(--green);">🌿 Home Remedies</div><div class="symhist-st">'+card.remedies.map(r=>'• '+esc(r)).join('<br>')+'</div></div>' : '')
-      +(card.otc&&card.otc.length ? '<div><div class="symhist-sl" style="color:var(--amber);">💊 OTC Options</div><div class="symhist-st">'+card.otc.map(o=>'• '+esc(o)).join('<br>')+'</div></div>' : '')
-      +(card.seeDoctor&&card.seeDoctor.length ? '<div><div class="symhist-sl" style="color:var(--red);">🏥 See Doctor If…</div><div class="symhist-st">'+card.seeDoctor.map(s=>'• '+esc(s)).join('<br>')+'</div></div>' : '')
-      +'</div>'
-      +'<div class="symhist-foot">'
-      +'<div class="symhist-tags">'+(card.tags||[]).map(t=>'<span class="symhist-tag">'+esc(t)+'</span>').join('')+'</div>'
-      +'<button class="symhist-del" onclick="deleteSymCard('+card.id+')" title="Delete">🗑</button>'
-      +'</div></div>';
+      +(card.summary?'<div><div class="symhist-sl" style="color:var(--blue);">Summary</div><div class="symhist-st">'+esc(card.summary)+'</div></div>':'')
+      +(card.remedies&&card.remedies.length?'<div><div class="symhist-sl" style="color:var(--green);">🌿 Home Remedies</div><div class="symhist-st">'+card.remedies.map(r=>'• '+esc(r)).join('<br>')+'</div></div>':'')
+      +(card.otc&&card.otc.length?'<div><div class="symhist-sl" style="color:var(--amber);">💊 OTC</div><div class="symhist-st">'+card.otc.map(o=>'• '+esc(o)).join('<br>')+'</div></div>':'')
+      +(card.seeDoctor&&card.seeDoctor.length?'<div><div class="symhist-sl" style="color:var(--red);">🏥 See Doctor If…</div><div class="symhist-st">'+card.seeDoctor.map(s=>'• '+esc(s)).join('<br>')+'</div></div>':'')
+      +'</div><div class="symhist-foot"><div class="symhist-tags">'+(card.tags||[]).map(t=>'<span class="symhist-tag">'+esc(t)+'</span>').join('')+'</div>'
+      +'<button class="symhist-del" onclick="deleteSymCard('+card.id+')" title="Delete">🗑</button></div></div>';
   }).join('');
 }
-
-function deleteSymCard(id) {
-  if (!confirm('Remove this symptom card?')) return;
-  VAULT.symptomVault = (VAULT.symptomVault || []).filter(c => c.id !== id);
-  saveToLocal();
-  renderSymHistory();
-  showToast('✓ Card deleted.');
-}
-
-function filterSymHistory() {
-  const q = (document.getElementById('symhist-search') ? document.getElementById('symhist-search').value : '').toLowerCase();
-  document.querySelectorAll('.symhist-card').forEach(card => {
-    card.style.display = (!q || card.textContent.toLowerCase().includes(q)) ? '' : 'none';
-  });
-}
-
-function exportSymHistory() {
-  if (!(VAULT.symptomVault || []).length) { showToast('No symptom cards to export.'); return; }
-  download(JSON.stringify({ exported:new Date().toISOString(), symptomHistory:VAULT.symptomVault }, null, 2),
-    'SymptomHistory_' + ts() + '.json', 'application/json');
-  showToast('✓ ' + VAULT.symptomVault.length + ' cards exported.');
-}
+function deleteSymCard(id){if(!confirm('Remove this symptom card?'))return;VAULT.symptomVault=(VAULT.symptomVault||[]).filter(c=>c.id!==id);saveToLocal();renderSymHistory();showToast('✓ Deleted.');}
+function filterSymHistory(){const q=(document.getElementById('symhist-search')?document.getElementById('symhist-search').value:'').toLowerCase();document.querySelectorAll('.symhist-card').forEach(c=>{c.style.display=(!q||c.textContent.toLowerCase().includes(q))?'':'none';});}
+function exportSymHistory(){if(!(VAULT.symptomVault||[]).length){showToast('No cards to export.');return;}download(JSON.stringify({exported:new Date().toISOString(),symptomHistory:VAULT.symptomVault},null,2),'SymptomHistory_'+ts()+'.json','application/json');showToast('✓ '+VAULT.symptomVault.length+' cards exported.');}
 
 // ════════════════════════════════════════════════════════
 async function callGroq(messages, maxTokens=400, temperature=0.5, raw=false) {
@@ -2846,14 +2756,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (restored) {
     updateStorageIndicator(true);
-    if (GROQ_KEY) {
-      const masked = GROQ_KEY.slice(0,8) + '…' + GROQ_KEY.slice(-4);
-      const kl = document.getElementById('key-status-label');
-      if (kl) kl.textContent = masked;
-    }
-    const rm = MODELS.find(x => x.id === GROQ_MODEL);
-    const ml = document.getElementById('model-status-label');
-    if (rm && ml) ml.textContent = rm.name;
+    if (GROQ_KEY) { const kl=document.getElementById('key-status-label'); if(kl) kl.textContent=GROQ_KEY.slice(0,8)+'…'+GROQ_KEY.slice(-4); }
+    const rm=MODELS.find(x=>x.id===GROQ_MODEL); const ml=document.getElementById('model-status-label'); if(rm&&ml) ml.textContent=rm.name;
     showToast('✓ Vault restored from local storage.', 2500);
   } else {
     updateStorageIndicator(false);
