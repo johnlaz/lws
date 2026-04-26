@@ -1,6 +1,6 @@
 {
   "name": "Wellness Strategy Suite",
-  "short_name": "WSS",
+  "short_name": "Wellness",
   "description": "Private strategy, behavioral record, and wellness management suite",
   "start_url": "./index.html",
   "display": "standalone",
